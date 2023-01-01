@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect } from "react";
+import {
+  graphql,
+  loadQuery,
+  PreloadedQuery,
+  usePreloadedQuery,
+  useQueryLoader,
+  useRelayEnvironment,
+} from "react-relay";
+import { environment } from "relay";
+import { AppTodosQuery as AppTodosQueryType } from "__generated__/AppTodosQuery.graphql";
+
+const AppTodosQuery = graphql`
+  query AppTodosQuery {
+    todos(page: 1, limit: 10) {
+      data {
+        id
+        title
+        description
+        created_at
+        updated_at
+        isCompleted
+      }
+      count
+      nextPage
+      prevPage
+    }
+  }
+`;
+const preloadedQuery = loadQuery<AppTodosQueryType>(
+  environment,
+  AppTodosQuery,
+  {}
+);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const data = usePreloadedQuery(AppTodosQuery, preloadedQuery);
+  console.log(data.todos.data);
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+  return <div>test</div>;
 }
 
-export default App
+export default App;
