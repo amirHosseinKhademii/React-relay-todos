@@ -1,7 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { Root } from "relay/root";
+import { App } from "App";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Root />
-);
+createRoot(document.getElementById("root") as HTMLElement).render(<App />);

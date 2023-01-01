@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<60883f1d99db0d0c0d1cc74cfc25bda2>>
+ * @generated SignedSource<<e48ba759ae1852ff53f5fb3a69014b40>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,8 +9,8 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type AppTodosQuery$variables = {};
-export type AppTodosQuery$data = {
+export type TodosQuery$variables = {};
+export type TodosQuery$data = {
   readonly todos: {
     readonly count: number | null;
     readonly data: ReadonlyArray<{
@@ -25,9 +25,9 @@ export type AppTodosQuery$data = {
     readonly prevPage: number | null;
   };
 };
-export type AppTodosQuery = {
-  response: AppTodosQuery$data;
-  variables: AppTodosQuery$variables;
+export type TodosQuery = {
+  response: TodosQuery$data;
+  variables: TodosQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -134,7 +134,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppTodosQuery",
+    "name": "TodosQuery",
     "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -143,20 +143,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "AppTodosQuery",
+    "name": "TodosQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "3e3ceda6a80fa1664ed0d43abdd30a5c",
+    "cacheID": "a484c0573d0f9005ed60a5eee48a4b2c",
     "id": null,
     "metadata": {},
-    "name": "AppTodosQuery",
+    "name": "TodosQuery",
     "operationKind": "query",
-    "text": "query AppTodosQuery {\n  todos(page: 1, limit: 10) {\n    data {\n      id\n      title\n      description\n      created_at\n      updated_at\n      isCompleted\n    }\n    count\n    nextPage\n    prevPage\n  }\n}\n"
+    "text": "query TodosQuery {\n  todos(page: 1, limit: 10) {\n    data {\n      id\n      title\n      description\n      created_at\n      updated_at\n      isCompleted\n    }\n    count\n    nextPage\n    prevPage\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9581b22cb3857637683059d0081ed17e";
+(node as any).hash = "7ed762bf92d2e1eae700ab1f32e71699";
 
 export default node;
