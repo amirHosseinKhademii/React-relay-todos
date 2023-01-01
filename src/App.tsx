@@ -6,7 +6,7 @@ import { environment } from "relay";
 export function App() {
   return (
     <RelayEnvironmentProvider environment={environment}>
-      <Suspense fallback="Loading ...">
+      <Suspense fallback="Loading Todos ...">
         <Todos />
       </Suspense>
     </RelayEnvironmentProvider>
