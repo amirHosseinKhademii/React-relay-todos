@@ -1,8 +1,8 @@
 import { graphql } from "react-relay";
 
 export const TodosQuery = graphql`
-  query TodosQuery {
-    todos(page: 1, limit: 10) {
+  query TodosQuery($page: Float, $limit: Float) {
+    todos(page: $page, limit: $limit) {
       data {
         id
         title
@@ -10,10 +10,19 @@ export const TodosQuery = graphql`
         created_at
         updated_at
         isCompleted
+        ...TodosUserFragment
       }
       count
       nextPage
       prevPage
+    }
+  }
+`;
+
+export const TodosUserFragment = graphql`
+  fragment TodosUserFragment on Todo {
+    user {
+      fullName
     }
   }
 `;

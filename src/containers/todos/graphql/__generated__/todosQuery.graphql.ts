@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e48ba759ae1852ff53f5fb3a69014b40>>
+ * @generated SignedSource<<e792b36137e9c31c4bd1dd4adfad2a4f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,11 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type TodosQuery$variables = {};
+import { FragmentRefs } from "relay-runtime";
+export type TodosQuery$variables = {
+  limit?: number | null;
+  page?: number | null;
+};
 export type TodosQuery$data = {
   readonly todos: {
     readonly count: number | null;
@@ -20,6 +24,7 @@ export type TodosQuery$data = {
       readonly isCompleted: boolean | null;
       readonly title: string;
       readonly updated_at: any | null;
+      readonly " $fragmentSpreads": FragmentRefs<"TodosUserFragment">;
     }>;
     readonly nextPage: number | null;
     readonly prevPage: number | null;
@@ -31,132 +36,213 @@ export type TodosQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "limit"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "page"
+},
+v2 = [
   {
-    "alias": null,
-    "args": [
-      {
-        "kind": "Literal",
-        "name": "limit",
-        "value": 10
-      },
-      {
-        "kind": "Literal",
-        "name": "page",
-        "value": 1
-      }
+    "kind": "Variable",
+    "name": "limit",
+    "variableName": "limit"
+  },
+  {
+    "kind": "Variable",
+    "name": "page",
+    "variableName": "page"
+  }
+],
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v4 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "title",
+  "storageKey": null
+},
+v5 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "description",
+  "storageKey": null
+},
+v6 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "created_at",
+  "storageKey": null
+},
+v7 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "updated_at",
+  "storageKey": null
+},
+v8 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "isCompleted",
+  "storageKey": null
+},
+v9 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "count",
+  "storageKey": null
+},
+v10 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "nextPage",
+  "storageKey": null
+},
+v11 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "prevPage",
+  "storageKey": null
+};
+return {
+  "fragment": {
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
     ],
-    "concreteType": "TodoResponse",
-    "kind": "LinkedField",
-    "name": "todos",
-    "plural": false,
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "TodosQuery",
     "selections": [
       {
         "alias": null,
-        "args": null,
-        "concreteType": "Todo",
+        "args": (v2/*: any*/),
+        "concreteType": "TodoResponse",
         "kind": "LinkedField",
-        "name": "data",
-        "plural": true,
+        "name": "todos",
+        "plural": false,
         "selections": [
           {
             "alias": null,
             "args": null,
-            "kind": "ScalarField",
-            "name": "id",
+            "concreteType": "Todo",
+            "kind": "LinkedField",
+            "name": "data",
+            "plural": true,
+            "selections": [
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/),
+              (v7/*: any*/),
+              (v8/*: any*/),
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "TodosUserFragment"
+              }
+            ],
             "storageKey": null
           },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "title",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "description",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "created_at",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "updated_at",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "isCompleted",
-            "storageKey": null
-          }
+          (v9/*: any*/),
+          (v10/*: any*/),
+          (v11/*: any*/)
         ],
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "count",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "nextPage",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "prevPage",
         "storageKey": null
       }
     ],
-    "storageKey": "todos(limit:10,page:1)"
-  }
-];
-return {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "TodosQuery",
-    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "TodosQuery",
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": (v2/*: any*/),
+        "concreteType": "TodoResponse",
+        "kind": "LinkedField",
+        "name": "todos",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Todo",
+            "kind": "LinkedField",
+            "name": "data",
+            "plural": true,
+            "selections": [
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/),
+              (v7/*: any*/),
+              (v8/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "User",
+                "kind": "LinkedField",
+                "name": "user",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "fullName",
+                    "storageKey": null
+                  },
+                  (v3/*: any*/)
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          (v9/*: any*/),
+          (v10/*: any*/),
+          (v11/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "a484c0573d0f9005ed60a5eee48a4b2c",
+    "cacheID": "2a51eab6465aab20ee3bd84402694d41",
     "id": null,
     "metadata": {},
     "name": "TodosQuery",
     "operationKind": "query",
-    "text": "query TodosQuery {\n  todos(page: 1, limit: 10) {\n    data {\n      id\n      title\n      description\n      created_at\n      updated_at\n      isCompleted\n    }\n    count\n    nextPage\n    prevPage\n  }\n}\n"
+    "text": "query TodosQuery(\n  $page: Float\n  $limit: Float\n) {\n  todos(page: $page, limit: $limit) {\n    data {\n      id\n      title\n      description\n      created_at\n      updated_at\n      isCompleted\n      ...TodosUserFragment\n    }\n    count\n    nextPage\n    prevPage\n  }\n}\n\nfragment TodosUserFragment on Todo {\n  user {\n    fullName\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7ed762bf92d2e1eae700ab1f32e71699";
+(node as any).hash = "cc12a2b4a8d446e7d21bbfc2af0a6b91";
 
 export default node;
