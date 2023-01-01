@@ -2,6 +2,7 @@ import { Todos } from "containers";
 import { Suspense } from "react";
 import { RelayEnvironmentProvider } from "react-relay";
 import { environment } from "relay";
+import "./index.css";
 
 export function App() {
   return (
