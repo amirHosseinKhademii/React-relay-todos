@@ -2,7 +2,7 @@ import { TodoCardsFragment } from "containers/todo/graphql/Todo.queries";
 import { TodoCardsFragment$key } from "containers/todo/graphql/__generated__/TodoCardsFragment.graphql";
 import { TodoQuery$data } from "containers/todo/graphql/__generated__/TodoQuery.graphql";
 import { useTransition } from "react";
-import { useFragment, usePaginationFragment } from "react-relay";
+import { usePaginationFragment } from "react-relay";
 
 export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
   const [isPending, startTransition] = useTransition();
