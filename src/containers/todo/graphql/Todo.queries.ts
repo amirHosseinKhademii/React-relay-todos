@@ -12,8 +12,16 @@ export const TodoQuery = graphql`
 `;
 
 export const TodoCardsFragment = graphql`
-  fragment TodoCardsFragment on Todo {
-    cards(first: 2) @connection(key: "List__cards") {
+  fragment TodoCardsFragment on Todo
+  @refetchable(queryName: "TodoCardsPaginationFrgament")
+  @argumentDefinitions(
+    before: { type: "String" }
+    after: { type: "String" }
+    first: { type: "Float", defaultValue: 2 }
+    last: { type: "Float" }
+  ) {
+    cards(before: $before, after: $after, first: $first, last: $last)
+      @connection(key: "List__cards") {
       edges {
         node {
           id

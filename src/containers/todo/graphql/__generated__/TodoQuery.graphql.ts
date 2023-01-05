@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<577cd235b1a5e46b6f960ddb152da5dd>>
+ * @generated SignedSource<<030ae20ec050f1ca0b25fc6fb968e0a2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -183,6 +183,20 @@ return {
                     "kind": "ScalarField",
                     "name": "hasNextPage",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "startCursor",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -205,12 +219,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "18690abe8aa3da2c5349e507d9d03478",
+    "cacheID": "792c4951f8bdb31677eac6bb4f4dd433",
     "id": null,
     "metadata": {},
     "name": "TodoQuery",
     "operationKind": "query",
-    "text": "query TodoQuery(\n  $id: ID!\n) {\n  todo(id: $id) {\n    id\n    title\n    description\n    ...TodoCardsFragment\n  }\n}\n\nfragment TodoCardsFragment on Todo {\n  cards(first: 2) {\n    edges {\n      node {\n        id\n        title\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query TodoQuery(\n  $id: ID!\n) {\n  todo(id: $id) {\n    id\n    title\n    description\n    ...TodoCardsFragment\n  }\n}\n\nfragment TodoCardsFragment on Todo {\n  cards(first: 2) {\n    edges {\n      node {\n        id\n        title\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();

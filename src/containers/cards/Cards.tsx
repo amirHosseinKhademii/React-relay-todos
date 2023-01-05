@@ -4,11 +4,14 @@ import { TodoQuery$data } from "containers/todo/graphql/__generated__/TodoQuery.
 import { useFragment, usePaginationFragment } from "react-relay";
 
 export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
-  const { cards } = useFragment(TodoCardsFragment, todo);
+  const { data, loadNext, loadPrevious } = usePaginationFragment(
+    TodoCardsFragment,
+    todo
+  );
 
   return (
     <ul className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 ">
-      {cards.edges?.map((card) => (
+      {data.cards.edges?.map((card) => (
         <li
           className="bg-amber-200 border border-amber-300 rounded p-2"
           key={card.node?.id}
@@ -16,6 +19,12 @@ export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
           {card.node?.title}
         </li>
       ))}
+      <button
+        className="bg-green-200 border border-green-300 rounded p-2"
+        onClick={() => loadNext(2)}
+      >
+        Load Next
+      </button>
     </ul>
   );
 };

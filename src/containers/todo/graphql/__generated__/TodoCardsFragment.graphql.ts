@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2c8915a19d204fe1c895ca6fa1dae886>>
+ * @generated SignedSource<<a892a3c61920301e607e834f6a8ea2bf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,7 +8,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TodoCardsFragment$data = {
   readonly cards: {
@@ -19,6 +19,7 @@ export type TodoCardsFragment$data = {
       } | null;
     }> | null;
   };
+  readonly id: string;
   readonly " $fragmentType": "TodoCardsFragment";
 };
 export type TodoCardsFragment$key = {
@@ -26,20 +27,70 @@ export type TodoCardsFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"TodoCardsFragment">;
 };
 
-const node: ReaderFragment = {
-  "argumentDefinitions": [],
+import TodoCardsPaginationFrgament_graphql from './TodoCardsPaginationFrgament.graphql';
+
+const node: ReaderFragment = (function(){
+var v0 = [
+  "cards"
+],
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
+return {
+  "argumentDefinitions": [
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "after"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "before"
+    },
+    {
+      "defaultValue": 2,
+      "kind": "LocalArgument",
+      "name": "first"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "last"
+    }
+  ],
   "kind": "Fragment",
   "metadata": {
     "connection": [
       {
         "count": null,
         "cursor": null,
-        "direction": "forward",
-        "path": [
-          "cards"
-        ]
+        "direction": "bidirectional",
+        "path": (v0/*: any*/)
       }
-    ]
+    ],
+    "refetch": {
+      "connection": {
+        "forward": {
+          "count": "first",
+          "cursor": "after"
+        },
+        "backward": {
+          "count": "last",
+          "cursor": "before"
+        },
+        "path": (v0/*: any*/)
+      },
+      "fragmentPathInResult": [
+        "node"
+      ],
+      "operation": TodoCardsPaginationFrgament_graphql,
+      "identifierField": "id"
+    }
   },
   "name": "TodoCardsFragment",
   "selections": [
@@ -67,13 +118,7 @@ const node: ReaderFragment = {
               "name": "node",
               "plural": false,
               "selections": [
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "id",
-                  "storageKey": null
-                },
+                (v1/*: any*/),
                 {
                   "alias": null,
                   "args": null,
@@ -122,18 +167,34 @@ const node: ReaderFragment = {
               "kind": "ScalarField",
               "name": "hasNextPage",
               "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "hasPreviousPage",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "startCursor",
+              "storageKey": null
             }
           ],
           "storageKey": null
         }
       ],
       "storageKey": null
-    }
+    },
+    (v1/*: any*/)
   ],
   "type": "Todo",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "eba45273a7b48ce9d023c34312880526";
+(node as any).hash = "3cb51c353ed1d0cff1720a9828ecae65";
 
 export default node;
