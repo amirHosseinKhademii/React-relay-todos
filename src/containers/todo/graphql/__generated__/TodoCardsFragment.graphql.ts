@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a892a3c61920301e607e834f6a8ea2bf>>
+ * @generated SignedSource<<858bfd370cb60fac83c10d6aa60a0419>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,9 @@ export type TodoCardsFragment$data = {
         readonly title: string;
       } | null;
     }> | null;
+    readonly pageInfo: {
+      readonly hasNextPage: boolean;
+    } | null;
   };
   readonly id: string;
   readonly " $fragmentType": "TodoCardsFragment";
@@ -105,6 +108,45 @@ return {
         {
           "alias": null,
           "args": null,
+          "concreteType": "CardPageInfo",
+          "kind": "LinkedField",
+          "name": "pageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "hasNextPage",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "endCursor",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "hasPreviousPage",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "startCursor",
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
           "concreteType": "CardEdge",
           "kind": "LinkedField",
           "name": "edges",
@@ -145,45 +187,6 @@ return {
             }
           ],
           "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "concreteType": "CardPageInfo",
-          "kind": "LinkedField",
-          "name": "pageInfo",
-          "plural": false,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "endCursor",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "hasNextPage",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "hasPreviousPage",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "startCursor",
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
         }
       ],
       "storageKey": null
@@ -195,6 +198,6 @@ return {
 };
 })();
 
-(node as any).hash = "3cb51c353ed1d0cff1720a9828ecae65";
+(node as any).hash = "4ac4e56e838f84ccbafbe4b10d5465c1";
 
 export default node;
