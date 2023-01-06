@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<469ad43f6821efa7238e689887a8d6ad>>
+ * @generated SignedSource<<0982c70be28d1890c252a7b9c9d7bbb3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,7 @@
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TodoMutation$variables = {
+  clientMutationId?: string | null;
   description?: string | null;
   id: string;
   isCompleted?: boolean | null;
@@ -18,7 +19,10 @@ export type TodoMutation$variables = {
 };
 export type TodoMutation$data = {
   readonly updateTodo: {
-    readonly " $fragmentSpreads": FragmentRefs<"TodoMutationFragment">;
+    readonly clientMutationId: string | null;
+    readonly todo: {
+      readonly " $fragmentSpreads": FragmentRefs<"TodoMutationFragment">;
+    };
   } | null;
 };
 export type TodoMutation = {
@@ -30,26 +34,36 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "description"
+  "name": "clientMutationId"
 },
 v1 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "id"
+  "name": "description"
 },
 v2 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "isCompleted"
+  "name": "id"
 },
 v3 = {
   "defaultValue": null,
   "kind": "LocalArgument",
+  "name": "isCompleted"
+},
+v4 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
   "name": "title"
 },
-v4 = [
+v5 = [
   {
     "fields": [
+      {
+        "kind": "Variable",
+        "name": "clientMutationId",
+        "variableName": "clientMutationId"
+      },
       {
         "kind": "Variable",
         "name": "description",
@@ -74,14 +88,22 @@ v4 = [
     "kind": "ObjectValue",
     "name": "input"
   }
-];
+],
+v6 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "clientMutationId",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": [
       (v0/*: any*/),
       (v1/*: any*/),
       (v2/*: any*/),
-      (v3/*: any*/)
+      (v3/*: any*/),
+      (v4/*: any*/)
     ],
     "kind": "Fragment",
     "metadata": null,
@@ -89,16 +111,28 @@ return {
     "selections": [
       {
         "alias": null,
-        "args": (v4/*: any*/),
+        "args": (v5/*: any*/),
         "concreteType": "UpdateTodoPayload",
         "kind": "LinkedField",
         "name": "updateTodo",
         "plural": false,
         "selections": [
+          (v6/*: any*/),
           {
+            "alias": null,
             "args": null,
-            "kind": "FragmentSpread",
-            "name": "TodoMutationFragment"
+            "concreteType": "Todo",
+            "kind": "LinkedField",
+            "name": "todo",
+            "plural": false,
+            "selections": [
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "TodoMutationFragment"
+              }
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -110,69 +144,68 @@ return {
   "kind": "Request",
   "operation": {
     "argumentDefinitions": [
+      (v2/*: any*/),
+      (v4/*: any*/),
       (v1/*: any*/),
       (v3/*: any*/),
-      (v0/*: any*/),
-      (v2/*: any*/)
+      (v0/*: any*/)
     ],
     "kind": "Operation",
     "name": "TodoMutation",
     "selections": [
       {
         "alias": null,
-        "args": (v4/*: any*/),
+        "args": (v5/*: any*/),
         "concreteType": "UpdateTodoPayload",
         "kind": "LinkedField",
         "name": "updateTodo",
         "plural": false,
         "selections": [
+          (v6/*: any*/),
           {
             "alias": null,
             "args": null,
-            "kind": "ScalarField",
-            "name": "clientMutationId",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "title",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "description",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "id",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "isCompleted",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "created_at",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "updated_at",
+            "concreteType": "Todo",
+            "kind": "LinkedField",
+            "name": "todo",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "title",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "description",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "id",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "isCompleted",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "updated_at",
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
         ],
@@ -181,16 +214,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c04b6ea6cf72a95bad54d047576d377a",
+    "cacheID": "c2344befea02b54ebca3ca2a5bc4c0fb",
     "id": null,
     "metadata": {},
     "name": "TodoMutation",
     "operationKind": "mutation",
-    "text": "mutation TodoMutation(\n  $id: ID!\n  $title: String\n  $description: String\n  $isCompleted: Boolean\n) {\n  updateTodo(input: {id: $id, isCompleted: $isCompleted, title: $title, description: $description}) {\n    ...TodoMutationFragment\n    id\n  }\n}\n\nfragment TodoMutationFragment on UpdateTodoPayload {\n  clientMutationId\n  title\n  description\n  id\n  isCompleted\n  created_at\n  updated_at\n}\n"
+    "text": "mutation TodoMutation(\n  $id: ID!\n  $title: String\n  $description: String\n  $isCompleted: Boolean\n  $clientMutationId: String\n) {\n  updateTodo(input: {id: $id, isCompleted: $isCompleted, title: $title, description: $description, clientMutationId: $clientMutationId}) {\n    clientMutationId\n    todo {\n      ...TodoMutationFragment\n      id\n    }\n  }\n}\n\nfragment TodoMutationFragment on Todo {\n  title\n  description\n  id\n  isCompleted\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "74beb2898e89ffc487614900de686b6a";
+(node as any).hash = "e72341f75421cfc765a9a825e02bbab8";
 
 export default node;

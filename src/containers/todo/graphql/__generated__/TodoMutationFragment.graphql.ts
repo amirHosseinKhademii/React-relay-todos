@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<125521e58c16d80d0a86310b2d073530>>
+ * @generated SignedSource<<967fcfb58bb26aed23ac679c73abddbf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,8 +11,6 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TodoMutationFragment$data = {
-  readonly clientMutationId: string | null;
-  readonly created_at: any | null;
   readonly description: string | null;
   readonly id: string;
   readonly isCompleted: boolean | null;
@@ -31,13 +29,6 @@ const node: ReaderFragment = {
   "metadata": null,
   "name": "TodoMutationFragment",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "clientMutationId",
-      "storageKey": null
-    },
     {
       "alias": null,
       "args": null,
@@ -70,21 +61,14 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "created_at",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
       "name": "updated_at",
       "storageKey": null
     }
   ],
-  "type": "UpdateTodoPayload",
+  "type": "Todo",
   "abstractKey": null
 };
 
-(node as any).hash = "95209b567a2ef26b6c887224a39689de";
+(node as any).hash = "b94a0bc56a20ddf83331a48bf82af6c1";
 
 export default node;

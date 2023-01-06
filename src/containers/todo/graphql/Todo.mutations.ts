@@ -6,6 +6,7 @@ export const TodoMutation = graphql`
     $title: String
     $description: String
     $isCompleted: Boolean
+    $clientMutationId: String
   ) {
     updateTodo(
       input: {
@@ -13,21 +14,23 @@ export const TodoMutation = graphql`
         isCompleted: $isCompleted
         title: $title
         description: $description
+        clientMutationId: $clientMutationId
       }
     ) {
-      ...TodoMutationFragment
+      clientMutationId
+      todo {
+        ...TodoMutationFragment
+      }
     }
   }
 `;
 
 export const TodoMutationFragment = graphql`
-  fragment TodoMutationFragment on UpdateTodoPayload {
-    clientMutationId
+  fragment TodoMutationFragment on Todo {
     title
     description
     id
     isCompleted
-    created_at
     updated_at
   }
 `;
