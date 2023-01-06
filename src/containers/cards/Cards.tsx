@@ -1,8 +1,9 @@
+import { TodoMutation } from "containers/todo/graphql/Todo.mutations";
 import { TodoCardsFragment } from "containers/todo/graphql/Todo.queries";
 import { TodoCardsFragment$key } from "containers/todo/graphql/__generated__/TodoCardsFragment.graphql";
-import { TodoQuery$data } from "containers/todo/graphql/__generated__/TodoQuery.graphql";
 import { useTransition } from "react";
-import { usePaginationFragment } from "react-relay";
+import { useMutation, usePaginationFragment } from "react-relay";
+export type GetElementType<T extends any[]> = T extends (infer U)[] ? U : never;
 
 export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
   const [isPending, startTransition] = useTransition();
@@ -15,12 +16,7 @@ export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
   return (
     <ul className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 ">
       {data.cards.edges?.map((card) => (
-        <li
-          className="bg-amber-200 border border-amber-300 rounded p-2"
-          key={card.node?.id}
-        >
-          {card.node?.title}
-        </li>
+        <Card key={card.node?.id} {...{ card }} />
       ))}
       {data.cards.pageInfo?.hasNextPage && (
         <button
@@ -33,5 +29,22 @@ export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
       )}
       {isPending && "Loading more ..."}
     </ul>
+  );
+};
+
+const Card = ({
+  card,
+}: {
+  card: {
+    readonly node: { readonly id: string; readonly title: string } | null;
+  };
+}) => {
+  return (
+    <li
+      className="bg-amber-200 border border-amber-300 rounded p-2 cursor-pointer"
+      key={card.node?.id}
+    >
+      {card.node?.title}
+    </li>
   );
 };

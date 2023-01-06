@@ -29,10 +29,33 @@ type CardPageInfo {
   hasNextPage: Boolean!
 }
 
+type User implements Node {
+  id: ID!
+  userName: String!
+  fullName: String!
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type AddCardPayload implements Node {
+  id: ID!
+  title: String!
+  description: String
+  clientMutationId: String
+}
+
 type Todo implements Node {
   id: ID!
   title: String!
   description: String
+  isCompleted: Boolean
+  created_at: DateTime
+  updated_at: DateTime
   cards(
     before: String
     after: String
@@ -59,8 +82,44 @@ type TodoPageInfo {
   hasNextPage: Boolean!
 }
 
+type AddTodoPayload implements Node {
+  id: ID!
+  title: String!
+  description: String
+  isCompleted: Boolean
+  created_at: DateTime
+  updated_at: DateTime
+  cards(
+    before: String
+    after: String
+    first: Float
+    last: Float
+    query: String
+  ): CardConnection!
+  clientMutationId: String
+}
+
+type UpdateTodoPayload implements Node {
+  id: ID!
+  title: String!
+  description: String
+  isCompleted: Boolean
+  created_at: DateTime
+  updated_at: DateTime
+  cards(
+    before: String
+    after: String
+    first: Float
+    last: Float
+    query: String
+  ): CardConnection!
+  clientMutationId: String
+}
+
 type Query {
   node(id: ID!): Node
+  users: [User!]!
+  user(userId: String!): User!
   todos(
     before: String
     after: String
@@ -79,6 +138,30 @@ type Query {
 }
 
 type Mutation {
-  addTodo(title: String!, description: String = ""): Todo!
-  addCard(title: String!, description: String = ""): Card!
+  signUp(userName: String!, fullName: String!, password: String!): String!
+  signIn(userName: String!, password: String!): String!
+  addTodo(input: AddTodoInput!): AddTodoPayload
+  updateTodo(input: UpdateTodoInput!): UpdateTodoPayload
+  addCard(input: AddCardInput!): AddCardPayload
+}
+
+input AddTodoInput {
+  title: String!
+  description: String = ""
+  clientMutationId: String
+}
+
+input UpdateTodoInput {
+  id: ID!
+  title: String
+  description: String
+  isCompleted: Boolean
+  clientMutationId: String
+}
+
+input AddCardInput {
+  todoId: ID!
+  title: String!
+  description: String = ""
+  clientMutationId: String
 }

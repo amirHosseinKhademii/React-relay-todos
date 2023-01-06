@@ -6,6 +6,7 @@ export const TodoQuery = graphql`
       id
       title
       description
+      isCompleted
       ...TodoCardsFragment
     }
   }

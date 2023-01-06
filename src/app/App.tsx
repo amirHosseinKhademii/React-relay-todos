@@ -7,7 +7,7 @@ import { TodoQuery as TTodoQuery } from "containers/todo/graphql/__generated__/T
 import { TodoQuery } from "containers/todo/graphql/Todo.queries";
 
 const initialQueryRef = loadQuery<TTodoQuery>(environment, TodoQuery, {
-  id: "VG9kbzo3ZWNlZmYzYi0zODRiLTQ2ODAtOTg5Ny0xMjZmMzc3ODAxODQ=",
+  id: "VG9kbzo5ZmFkMGQ2YS04YjIwLTRjNzgtOGNkZi0yYTM4MjcwMzY1OGY=",
 });
 
 export function App() {
