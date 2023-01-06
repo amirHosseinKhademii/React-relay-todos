@@ -1,22 +1,8 @@
 import { graphql } from "react-relay";
 
 export const TodoMutation = graphql`
-  mutation TodoMutation(
-    $id: ID!
-    $title: String
-    $description: String
-    $isCompleted: Boolean
-    $clientMutationId: String
-  ) {
-    updateTodo(
-      input: {
-        id: $id
-        isCompleted: $isCompleted
-        title: $title
-        description: $description
-        clientMutationId: $clientMutationId
-      }
-    ) {
+  mutation TodoMutation($input: UpdateTodoInput!) {
+    updateTodo(input: $input) {
       clientMutationId
       todo {
         ...TodoMutationFragment
@@ -31,6 +17,5 @@ export const TodoMutationFragment = graphql`
     description
     id
     isCompleted
-    updated_at
   }
 `;

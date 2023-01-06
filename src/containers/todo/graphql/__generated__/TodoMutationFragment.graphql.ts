@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<967fcfb58bb26aed23ac679c73abddbf>>
+ * @generated SignedSource<<a0ec525ee04dd225729c012a1fa8f4f9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,7 +15,6 @@ export type TodoMutationFragment$data = {
   readonly id: string;
   readonly isCompleted: boolean | null;
   readonly title: string;
-  readonly updated_at: any | null;
   readonly " $fragmentType": "TodoMutationFragment";
 };
 export type TodoMutationFragment$key = {
@@ -56,19 +55,12 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "isCompleted",
       "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "updated_at",
-      "storageKey": null
     }
   ],
   "type": "Todo",
   "abstractKey": null
 };
 
-(node as any).hash = "b94a0bc56a20ddf83331a48bf82af6c1";
+(node as any).hash = "6a8aab3cbe84b39a8fc1b92226304582";
 
 export default node;

@@ -14,7 +14,10 @@ export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
       loadNext(2);
     });
   return (
-    <ul className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 ">
+    <ul
+      className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 "
+      onClick={(e) => e.stopPropagation()}
+    >
       {data.cards.edges?.map((card) => (
         <Card key={card.node?.id} {...{ card }} />
       ))}
