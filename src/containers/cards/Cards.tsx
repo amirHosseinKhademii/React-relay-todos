@@ -1,18 +1,8 @@
-import { TodoMutation } from "containers/todo/graphql/Todo.mutations";
-import { TodoCardsFragment } from "containers/todo/graphql/Todo.queries";
-import { TodoCardsFragment$key } from "containers/todo/graphql/__generated__/TodoCardsFragment.graphql";
-import { useTransition } from "react";
-import { useMutation, usePaginationFragment } from "react-relay";
-export type GetElementType<T extends any[]> = T extends (infer U)[] ? U : never;
+import { TCards, useCards } from "./hooks";
 
-export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
-  const [isPending, startTransition] = useTransition();
-  const { data, loadNext } = usePaginationFragment(TodoCardsFragment, todo);
+export const Cards = ({ todo }: TCards) => {
+  const { data, isPending, onLoadMore } = useCards({ todo });
 
-  const onLoadMore = () =>
-    startTransition(() => {
-      loadNext(2);
-    });
   return (
     <ul
       className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 "
@@ -27,7 +17,7 @@ export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
           onClick={onLoadMore}
           disabled={isPending}
         >
-          Load Next
+          Load Next Cards
         </button>
       )}
       {isPending && "Loading more ..."}
