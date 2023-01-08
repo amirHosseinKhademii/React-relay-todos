@@ -140,3 +140,8 @@ input AddCardInput {
   description: String = ""
   clientMutationId: String
 }
+
+type Subscription {
+  todoUpdated: Todo!
+  cardAdded: Card!
+}
