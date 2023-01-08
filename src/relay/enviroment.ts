@@ -9,7 +9,7 @@ import {
   GraphQLResponse,
 } from "relay-runtime";
 import { token } from "./token";
-import { SubscriptionClient } from "subscriptions-transport-ws";
+//import { SubscriptionClient } from "subscriptions-transport-ws";
 
 import { createClient } from "graphql-ws";
 

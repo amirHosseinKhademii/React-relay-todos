@@ -6,7 +6,7 @@ import { TodoQuery } from "containers/todo/graphql/Todo.queries";
 import { useId } from "react";
 
 export const useTodo = (id: string) => {
-  const { todo } = useLazyLoadQuery<TTodoQuery>(TodoQuery, { id });
+  const { node: todo } = useLazyLoadQuery<TTodoQuery>(TodoQuery, { id });
   const [mutate] = useMutation<TTodoMutation>(TodoMutation);
   const clientMutationId = useId();
 
@@ -16,18 +16,18 @@ export const useTodo = (id: string) => {
       mutate({
         variables: {
           input: {
-            id: todo.id,
-            isCompleted: !todo.isCompleted,
+            id: todo?.id!,
+            isCompleted: !todo?.isCompleted,
             clientMutationId: clientMutationId,
           },
         },
         optimisticResponse: {
           updateTodo: {
             todo: {
-              id: todo.id,
-              isCompleted: !todo.isCompleted,
-              description: todo.description,
-              title: todo.title,
+              id: todo?.id!,
+              isCompleted: !todo?.isCompleted,
+              description: todo?.description,
+              title: todo?.title,
             },
             clientMutationId: clientMutationId,
           },

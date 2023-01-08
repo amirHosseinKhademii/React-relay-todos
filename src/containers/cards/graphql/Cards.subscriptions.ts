@@ -10,3 +10,14 @@ export const CardsSubscription = graphql`
     }
   }
 `;
+
+export const CardsUpdatedSubscription = graphql`
+  subscription CardsUpdatedSubscription {
+    cardUpdated {
+      __typename
+      id
+      title
+      description
+    }
+  }
+`;

@@ -2,12 +2,14 @@ import { graphql } from "react-relay";
 
 export const TodoQuery = graphql`
   query TodoQuery($id: ID!) {
-    todo(id: $id) {
-      id
-      title
-      description
-      isCompleted
-      ...TodoCardsFragment
+    node(id: $id) {
+      ... on Todo {
+        id
+        title
+        description
+        isCompleted
+        ...TodoCardsFragment
+      }
     }
   }
 `;
