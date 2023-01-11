@@ -6,12 +6,12 @@ export const Todo = ({ id }: { id: string }) => {
   return (
     <div
       className={`mx-auto w-full rounded border border-gray-300  p-4 shadow-lg ${
-        todo.isCompleted ? "bg-slate-400" : "bg-gray-100"
+        todo?.isCompleted ? "bg-slate-400" : "bg-gray-100"
       }`}
       onClick={onUpdate}
     >
-      <p className="text-lg pb-4 text-center"> {todo.title}</p>
-      <Cards {...{ todo }} />
+      <p className="text-lg pb-4 text-center"> {todo?.title}</p>
+      {todo && <Cards {...{ todo }} />}
     </div>
   );
 };

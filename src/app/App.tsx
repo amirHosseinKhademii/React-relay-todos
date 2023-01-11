@@ -2,13 +2,13 @@ import { Suspense } from "react";
 import { RelayEnvironmentProvider } from "react-relay";
 import { environment } from "relay";
 import "./index.css";
-import { Todos } from "containers/todo/Todos";
+import { TodosPage } from "pages/todo/TodoPage";
 
 export function App() {
   return (
     <RelayEnvironmentProvider environment={environment}>
       <Suspense fallback="Loading Todos ...">
-        <Todos />
+        <TodosPage />
       </Suspense>
     </RelayEnvironmentProvider>
   );

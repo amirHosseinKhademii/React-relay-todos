@@ -5,7 +5,7 @@ export const Todos = () => {
 
   return (
     <ul
-      className="mx-auto max-w-xl my-20  border border-green-500 bg-green-200 rounded p-4 shadow-md flex flex-col space-y-2 "
+      className="  border border-green-500 bg-green-200 rounded p-4 shadow-md flex flex-col space-y-2 "
       onClick={(e) => e.stopPropagation()}
     >
       {data.todos.edges?.map((todo) => (
