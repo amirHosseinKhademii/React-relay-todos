@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { useTodos } from "./hooks";
 import { Todo } from "./Todo";
 export const Todos = () => {
@@ -9,7 +10,16 @@ export const Todos = () => {
       onClick={(e) => e.stopPropagation()}
     >
       {data.todos.edges?.map((todo) => (
-        <Todo id={todo.node?.id!} key={todo.node?.id} />
+        <Suspense
+          key={todo.node?.id}
+          fallback={
+            <div
+              className={`mx-auto w-full rounded border border-gray-300  p-4 shadow-lg bg-gray-100`}
+            />
+          }
+        >
+          <Todo id={todo.node?.id!} />
+        </Suspense>
       ))}
       {data.todos.pageInfo?.hasNextPage && (
         <button
