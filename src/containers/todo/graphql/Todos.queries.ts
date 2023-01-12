@@ -16,6 +16,7 @@ export const TodosFragment = graphql`
   @refetchable(queryName: "TodosPaginationFrgament") {
     todos(before: $before, after: $after, first: $first, last: $last)
       @connection(key: "List__todos") {
+      __id
       pageInfo {
         hasNextPage
       }

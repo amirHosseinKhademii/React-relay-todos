@@ -11,7 +11,7 @@ export const Todo = ({ id }: { id: string }) => {
       onClick={onUpdate}
     >
       <p className="text-lg pb-4 text-center"> {todo?.title}</p>
-      {todo && <Cards {...{ todo }} />}
+      {todo && <Cards {...{ todo }} todoId={todo.id!} />}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<858bfd370cb60fac83c10d6aa60a0419>>
+ * @generated SignedSource<<fbdb1b3ccea9533c30db323718c301a4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,6 +12,7 @@ import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TodoCardsFragment$data = {
   readonly cards: {
+    readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly id: string;
@@ -187,6 +188,18 @@ return {
             }
           ],
           "storageKey": null
+        },
+        {
+          "kind": "ClientExtension",
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "__id",
+              "storageKey": null
+            }
+          ]
         }
       ],
       "storageKey": null
@@ -198,6 +211,6 @@ return {
 };
 })();
 
-(node as any).hash = "4ac4e56e838f84ccbafbe4b10d5465c1";
+(node as any).hash = "7c3db239ee9e11c25ff86d3066bc56ae";
 
 export default node;

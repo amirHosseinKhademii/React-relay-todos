@@ -25,6 +25,7 @@ export const TodoCardsFragment = graphql`
   ) {
     cards(before: $before, after: $after, first: $first, last: $last)
       @connection(key: "List__cards") {
+      __id
       pageInfo {
         hasNextPage
       }

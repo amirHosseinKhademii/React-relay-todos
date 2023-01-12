@@ -1,26 +1,68 @@
+import { Modal } from "components";
 import { TCards, useCards } from "./hooks";
-export const Cards = ({ todo }: TCards) => {
-  const { data, isPending, onLoadMore } = useCards({ todo });
+export const Cards = ({ todo, todoId }: TCards) => {
+  const { data, isPending, onLoadMore, onClose, onOpen, onSubmit, isOpen } =
+    useCards({
+      todo,
+      todoId,
+    });
 
   return (
-    <ul
-      className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 "
-      onClick={(e) => e.stopPropagation()}
-    >
-      {data.cards.edges?.map((card) => (
-        <Card key={card.node?.id} {...{ card }} />
-      ))}
-      {data.cards.pageInfo?.hasNextPage && (
+    <>
+      <div>
         <button
-          className="bg-green-200 border border-green-300 rounded p-2"
-          onClick={onLoadMore}
-          disabled={isPending}
+          className=" mb-4 p-4 rounded bg-gray-600 text-white text-center w-full"
+          onClick={onOpen}
         >
-          Load Next Cards
+          Create Card
         </button>
+        <ul
+          className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 "
+          onClick={(e) => e.stopPropagation()}
+        >
+          {data.cards.edges?.map((card) => (
+            <Card key={card.node?.id} {...{ card }} />
+          ))}
+          {data.cards.pageInfo?.hasNextPage && (
+            <button
+              className="bg-green-200 border border-green-300 rounded p-2"
+              onClick={onLoadMore}
+              disabled={isPending}
+            >
+              Load Next Cards
+            </button>
+          )}
+          {isPending && "Loading more ..."}
+        </ul>
+      </div>
+      {isOpen && (
+        <Modal {...{ onClose }}>
+          <form
+            className="w-full flex flex-col space-y-8 mt-12"
+            {...{ onSubmit }}
+          >
+            <input
+              type="text"
+              placeholder="Title"
+              name="title"
+              className="w-full h-14 rounded border border-gray-300 px-4"
+            />
+            <input
+              name="description"
+              type="text"
+              placeholder="Description"
+              className="w-full h-14 rounded border border-gray-300 px-4"
+            />
+            <button
+              type="submit"
+              className=" mb-4 p-4 rounded bg-gray-600 text-white text-center w-full"
+            >
+              Save Card
+            </button>
+          </form>
+        </Modal>
       )}
-      {isPending && "Loading more ..."}
-    </ul>
+    </>
   );
 };
 
