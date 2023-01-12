@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fbdb1b3ccea9533c30db323718c301a4>>
+ * @generated SignedSource<<e971adda7a7c8ee69f4ada1981f0a20e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,11 +10,12 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TodoCardsFragment$data = {
+export type CardsFragment$data = {
   readonly cards: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly __id: string;
         readonly id: string;
         readonly title: string;
       } | null;
@@ -24,11 +25,11 @@ export type TodoCardsFragment$data = {
     } | null;
   };
   readonly id: string;
-  readonly " $fragmentType": "TodoCardsFragment";
+  readonly " $fragmentType": "CardsFragment";
 };
-export type TodoCardsFragment$key = {
-  readonly " $data"?: TodoCardsFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"TodoCardsFragment">;
+export type CardsFragment$key = {
+  readonly " $data"?: CardsFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CardsFragment">;
 };
 
 import TodoCardsPaginationFrgament_graphql from './TodoCardsPaginationFrgament.graphql';
@@ -43,6 +44,18 @@ v1 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
+},
+v2 = {
+  "kind": "ClientExtension",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "__id",
+      "storageKey": null
+    }
+  ]
 };
 return {
   "argumentDefinitions": [
@@ -96,7 +109,7 @@ return {
       "identifierField": "id"
     }
   },
-  "name": "TodoCardsFragment",
+  "name": "CardsFragment",
   "selections": [
     {
       "alias": "cards",
@@ -169,6 +182,7 @@ return {
                   "name": "title",
                   "storageKey": null
                 },
+                (v2/*: any*/),
                 {
                   "alias": null,
                   "args": null,
@@ -189,18 +203,7 @@ return {
           ],
           "storageKey": null
         },
-        {
-          "kind": "ClientExtension",
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "__id",
-              "storageKey": null
-            }
-          ]
-        }
+        (v2/*: any*/)
       ],
       "storageKey": null
     },
@@ -211,6 +214,6 @@ return {
 };
 })();
 
-(node as any).hash = "7c3db239ee9e11c25ff86d3066bc56ae";
+(node as any).hash = "bc8decddc50e3a578e1338bb7b1bcccc";
 
 export default node;

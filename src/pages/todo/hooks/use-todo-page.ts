@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import { useMutation } from "react-relay";
-import { TodosPageMutation } from "pages/todo/graphql/TodosPage.mutation";
-import { TodosPageMutation as TTodosPageMutation } from "pages/todo/graphql/__generated__/TodosPageMutation.graphql";
+import { TodoAddMutation } from "containers/todo/graphql/Todo.mutations";
+import { TodoAddMutation as TTodoAddMutation } from "containers/todo/graphql/__generated__/TodoAddMutation.graphql";
 
 export const useTodoPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,7 @@ export const useTodoPage = () => {
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
 
-  const [mutate] = useMutation<TTodosPageMutation>(TodosPageMutation);
+  const [mutate] = useMutation<TTodoAddMutation>(TodoAddMutation);
   const clientMutationId = useId();
   return {
     isOpen,

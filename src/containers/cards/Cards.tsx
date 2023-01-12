@@ -1,5 +1,8 @@
 import { Modal } from "components";
+import { Suspense } from "react";
+import { Card } from "./Card";
 import { TCards, useCards } from "./hooks";
+
 export const Cards = ({ todo, todoId }: TCards) => {
   const { data, isPending, onLoadMore, onClose, onOpen, onSubmit, isOpen } =
     useCards({
@@ -21,7 +24,14 @@ export const Cards = ({ todo, todoId }: TCards) => {
           onClick={(e) => e.stopPropagation()}
         >
           {data.cards.edges?.map((card) => (
-            <Card key={card.node?.id} {...{ card }} />
+            <Suspense
+              key={card.node?.id}
+              fallback={
+                <li className="bg-amber-200 border border-amber-300 rounded p-2 cursor-pointer flex items-center justify-between"></li>
+              }
+            >
+              <Card {...{ card }} __id={data.cards.__id} />
+            </Suspense>
           ))}
           {data.cards.pageInfo?.hasNextPage && (
             <button
@@ -63,22 +73,5 @@ export const Cards = ({ todo, todoId }: TCards) => {
         </Modal>
       )}
     </>
-  );
-};
-
-const Card = ({
-  card,
-}: {
-  card: {
-    readonly node: { readonly id: string; readonly title: string } | null;
-  };
-}) => {
-  return (
-    <li
-      className="bg-amber-200 border border-amber-300 rounded p-2 cursor-pointer"
-      key={card.node?.id}
-    >
-      {card.node?.title}
-    </li>
   );
 };

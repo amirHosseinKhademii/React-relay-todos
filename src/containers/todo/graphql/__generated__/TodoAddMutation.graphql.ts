@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f187e729ca310db21346654c3d869327>>
+ * @generated SignedSource<<1242cf29584f738a3c4e5e8c922390a2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,30 +10,29 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type AddCardInput = {
+export type AddTodoInput = {
   clientMutationId?: string | null;
   description?: string | null;
   title: string;
-  todoId: string;
 };
-export type CardsMutation$variables = {
+export type TodoAddMutation$variables = {
   connections: ReadonlyArray<string>;
-  input: AddCardInput;
+  input: AddTodoInput;
 };
-export type CardsMutation$data = {
-  readonly addCard: {
-    readonly addCardEdge: {
+export type TodoAddMutation$data = {
+  readonly addTodo: {
+    readonly addTodoEdge: {
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CardsMutationFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"TodoMutationFragment">;
       } | null;
     };
     readonly clientMutationId: string | null;
   } | null;
 };
-export type CardsMutation = {
-  response: CardsMutation$data;
-  variables: CardsMutation$variables;
+export type TodoAddMutation = {
+  response: TodoAddMutation$data;
+  variables: TodoAddMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -76,30 +75,30 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "CardsMutation",
+    "name": "TodoAddMutation",
     "selections": [
       {
         "alias": null,
         "args": (v2/*: any*/),
-        "concreteType": "AddCardPayload",
+        "concreteType": "AddTodoPayload",
         "kind": "LinkedField",
-        "name": "addCard",
+        "name": "addTodo",
         "plural": false,
         "selections": [
           (v3/*: any*/),
           {
             "alias": null,
             "args": null,
-            "concreteType": "CardResponseEdge",
+            "concreteType": "TodoResponseEdge",
             "kind": "LinkedField",
-            "name": "addCardEdge",
+            "name": "addTodoEdge",
             "plural": false,
             "selections": [
               (v4/*: any*/),
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "Card",
+                "concreteType": "Todo",
                 "kind": "LinkedField",
                 "name": "node",
                 "plural": false,
@@ -107,7 +106,7 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "CardsMutationFragment"
+                    "name": "TodoMutationFragment"
                   }
                 ],
                 "storageKey": null
@@ -129,30 +128,30 @@ return {
       (v0/*: any*/)
     ],
     "kind": "Operation",
-    "name": "CardsMutation",
+    "name": "TodoAddMutation",
     "selections": [
       {
         "alias": null,
         "args": (v2/*: any*/),
-        "concreteType": "AddCardPayload",
+        "concreteType": "AddTodoPayload",
         "kind": "LinkedField",
-        "name": "addCard",
+        "name": "addTodo",
         "plural": false,
         "selections": [
           (v3/*: any*/),
           {
             "alias": null,
             "args": null,
-            "concreteType": "CardResponseEdge",
+            "concreteType": "TodoResponseEdge",
             "kind": "LinkedField",
-            "name": "addCardEdge",
+            "name": "addTodoEdge",
             "plural": false,
             "selections": [
               (v4/*: any*/),
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "Card",
+                "concreteType": "Todo",
                 "kind": "LinkedField",
                 "name": "node",
                 "plural": false,
@@ -177,6 +176,13 @@ return {
                     "kind": "ScalarField",
                     "name": "id",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "isCompleted",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -198,7 +204,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "edgeTypeName",
-                    "value": "CardEdge"
+                    "value": "TodoEdge"
                   }
                 ]
               }
@@ -211,16 +217,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e7dac1ba72383d3ba057304cd296e22a",
+    "cacheID": "17c5798ac1895c3014649469c259c21e",
     "id": null,
     "metadata": {},
-    "name": "CardsMutation",
+    "name": "TodoAddMutation",
     "operationKind": "mutation",
-    "text": "mutation CardsMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardsMutationFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardsMutationFragment on Card {\n  title\n  description\n  id\n}\n"
+    "text": "mutation TodoAddMutation(\n  $input: AddTodoInput!\n) {\n  addTodo(input: $input) {\n    clientMutationId\n    addTodoEdge {\n      cursor\n      node {\n        ...TodoMutationFragment\n        id\n      }\n    }\n  }\n}\n\nfragment TodoMutationFragment on Todo {\n  title\n  description\n  id\n  isCompleted\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9a9be777f362c61a8dcfdfb91f0106af";
+(node as any).hash = "213a183b44dd852ac3b4853810d7eb5c";
 
 export default node;

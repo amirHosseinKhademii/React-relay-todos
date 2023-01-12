@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<df6a31d8d7b8d0a7d753b06c82ec01e8>>
+ * @generated SignedSource<<5a9fbac49fdbb99d32eafdacf9681c4b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,7 +19,7 @@ export type TodoQuery$data = {
     readonly id?: string;
     readonly isCompleted?: boolean | null;
     readonly title?: string;
-    readonly " $fragmentSpreads": FragmentRefs<"TodoCardsFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"CardsFragment">;
   } | null;
 };
 export type TodoQuery = {
@@ -83,7 +83,19 @@ v7 = [
     "name": "first",
     "value": 2
   }
-];
+],
+v8 = {
+  "kind": "ClientExtension",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "__id",
+      "storageKey": null
+    }
+  ]
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -109,7 +121,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "TodoCardsFragment"
+                "name": "CardsFragment"
               }
             ],
             "type": "Todo",
@@ -209,6 +221,7 @@ return {
                         "selections": [
                           (v2/*: any*/),
                           (v3/*: any*/),
+                          (v8/*: any*/),
                           (v6/*: any*/)
                         ],
                         "storageKey": null
@@ -223,18 +236,7 @@ return {
                     ],
                     "storageKey": null
                   },
-                  {
-                    "kind": "ClientExtension",
-                    "selections": [
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "__id",
-                        "storageKey": null
-                      }
-                    ]
-                  }
+                  (v8/*: any*/)
                 ],
                 "storageKey": "cards(first:2)"
               },
@@ -257,16 +259,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "52a5b7a62abb877cd69887cb2b1fc46d",
+    "cacheID": "8e730e9d9e6adc3b2ac427d2987f3065",
     "id": null,
     "metadata": {},
     "name": "TodoQuery",
     "operationKind": "query",
-    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...TodoCardsFragment\n    }\n    id\n  }\n}\n\nfragment TodoCardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d8facc59d5c5d3f8d14f765bb2ac0704";
+(node as any).hash = "cdd5f9d89f84c5ef478f238ef4250692";
 
 export default node;

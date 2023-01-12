@@ -5,14 +5,16 @@ import {
   useSubscription,
 } from "react-relay";
 import { GraphQLSubscriptionConfig } from "relay-runtime";
-import { TodoCardsFragment } from "containers/todo/graphql/Todo.queries";
+
 import { CardsUpdatedSubscription } from "containers/cards/graphql/Cards.subscriptions";
 import type { CardsUpdatedSubscription as TCardsUpdatedSubscription } from "containers/cards/graphql/__generated__/CardsUpdatedSubscription.graphql";
-import type { TodoCardsFragment$key } from "containers/todo/graphql/__generated__/TodoCardsFragment.graphql";
-import { CardsMutation } from "../graphql/Cards.Mutation";
-import { CardsMutation as TCardsMutation } from "../graphql/__generated__/CardsMutation.graphql";
 
-export type TCards = { todo: TodoCardsFragment$key; todoId: string };
+import { CardAddMutation } from "../graphql/Card.mutation";
+import { CardAddMutation as TCardAddMutation } from "../graphql/__generated__/CardAddMutation.graphql";
+import { CardsFragment } from "../graphql/Cards.fragment";
+import { CardsFragment$key } from "../graphql/__generated__/CardsFragment.graphql";
+
+export type TCards = { todo: CardsFragment$key; todoId: string };
 
 const subscriptionConfig: GraphQLSubscriptionConfig<TCardsUpdatedSubscription> =
   {
@@ -22,7 +24,7 @@ const subscriptionConfig: GraphQLSubscriptionConfig<TCardsUpdatedSubscription> =
 
 export const useCards = ({ todo, todoId }: TCards) => {
   const [isPending, startTransition] = useTransition();
-  const { data, loadNext } = usePaginationFragment(TodoCardsFragment, todo);
+  const { data, loadNext } = usePaginationFragment(CardsFragment, todo);
 
   //useSubscription(subscriptionConfig);
 
@@ -39,7 +41,7 @@ export const useCards = ({ todo, todoId }: TCards) => {
   };
   const onClose = () => setIsOpen(false);
 
-  const [mutate] = useMutation<TCardsMutation>(CardsMutation);
+  const [mutate] = useMutation<TCardAddMutation>(CardAddMutation);
   const clientMutationId = useId();
 
   return {

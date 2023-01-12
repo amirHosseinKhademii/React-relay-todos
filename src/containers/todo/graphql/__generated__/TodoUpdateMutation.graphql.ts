@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8fe614b4f57ab811524365858b3442c2>>
+ * @generated SignedSource<<5eeda18602f10f430867470e6c3368b3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,10 +17,10 @@ export type UpdateTodoInput = {
   isCompleted?: boolean | null;
   title?: string | null;
 };
-export type TodoMutation$variables = {
+export type TodoUpdateMutation$variables = {
   input: UpdateTodoInput;
 };
-export type TodoMutation$data = {
+export type TodoUpdateMutation$data = {
   readonly updateTodo: {
     readonly clientMutationId: string | null;
     readonly todo: {
@@ -28,9 +28,9 @@ export type TodoMutation$data = {
     };
   } | null;
 };
-export type TodoMutation = {
-  response: TodoMutation$data;
-  variables: TodoMutation$variables;
+export type TodoUpdateMutation = {
+  response: TodoUpdateMutation$data;
+  variables: TodoUpdateMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -60,7 +60,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "TodoMutation",
+    "name": "TodoUpdateMutation",
     "selections": [
       {
         "alias": null,
@@ -98,7 +98,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "TodoMutation",
+    "name": "TodoUpdateMutation",
     "selections": [
       {
         "alias": null,
@@ -154,16 +154,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7c6edf086fe4235db1cf767ed0a99e08",
+    "cacheID": "bf5c4fd652242ddae552046d73fe42b2",
     "id": null,
     "metadata": {},
-    "name": "TodoMutation",
+    "name": "TodoUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation TodoMutation(\n  $input: UpdateTodoInput!\n) {\n  updateTodo(input: $input) {\n    clientMutationId\n    todo {\n      ...TodoMutationFragment\n      id\n    }\n  }\n}\n\nfragment TodoMutationFragment on Todo {\n  title\n  description\n  id\n  isCompleted\n}\n"
+    "text": "mutation TodoUpdateMutation(\n  $input: UpdateTodoInput!\n) {\n  updateTodo(input: $input) {\n    clientMutationId\n    todo {\n      ...TodoMutationFragment\n      id\n    }\n  }\n}\n\nfragment TodoMutationFragment on Todo {\n  title\n  description\n  id\n  isCompleted\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e3368675371d982abcec7b514fc414c9";
+(node as any).hash = "3789e56924711243b06074815739638e";
 
 export default node;
