@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<516e837895a0aea04581f20e8cbd65d6>>
+ * @generated SignedSource<<8aad31be06a8af866255a2e37e280be7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -186,25 +186,30 @@ return {
                   }
                 ],
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "filters": null,
+                "handle": "appendNode",
+                "key": "",
+                "kind": "LinkedHandle",
+                "name": "node",
+                "handleArgs": [
+                  {
+                    "kind": "Variable",
+                    "name": "connections",
+                    "variableName": "connections"
+                  },
+                  {
+                    "kind": "Literal",
+                    "name": "edgeTypeName",
+                    "value": "TodoEdge"
+                  }
+                ]
               }
             ],
             "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "filters": null,
-            "handle": "appendEdge",
-            "key": "",
-            "kind": "LinkedHandle",
-            "name": "addTodoEdge",
-            "handleArgs": [
-              {
-                "kind": "Variable",
-                "name": "connections",
-                "variableName": "connections"
-              }
-            ]
           }
         ],
         "storageKey": null
@@ -222,6 +227,6 @@ return {
 };
 })();
 
-(node as any).hash = "d03d6c954b6f82cbc53a985d59e47601";
+(node as any).hash = "d5dcec357f76555eb94f5b73614c747c";
 
 export default node;

@@ -56,7 +56,7 @@ export const TodosPage = () => {
                     clientMutationId,
                   },
                 },
-                //optimisticUpdater: onClose,
+                optimisticUpdater: onClose,
               });
             }}
           >

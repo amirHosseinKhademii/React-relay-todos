@@ -4,9 +4,9 @@ export const TodosPageMutation = graphql`
   mutation TodosPageMutation($input: AddTodoInput!, $connections: [ID!]!) {
     addTodo(input: $input) {
       clientMutationId
-      addTodoEdge @appendEdge(connections: $connections) {
+      addTodoEdge {
         cursor
-        node {
+        node @appendNode(connections: $connections, edgeTypeName: "TodoEdge") {
           ...TodoMutationFragment
         }
       }
