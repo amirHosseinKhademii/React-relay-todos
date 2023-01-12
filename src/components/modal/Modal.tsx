@@ -13,7 +13,7 @@ export const Modal = ({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg p-8 z-50 w-10/12 h-fit opacity-100"
+        className="bg-white rounded-lg p-8 z-50 w-10/12 md:w-1/2 h-fit opacity-100"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="text-lg text-gray-800">{children}</div>

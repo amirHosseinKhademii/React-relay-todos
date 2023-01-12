@@ -1,5 +1,5 @@
 import { Modal } from "components";
-import { Todos } from "containers/todo/Todos";
+import { Todos } from "containers/todos/Todos";
 import { useTodoPage } from "./hooks";
 
 export const TodosPage = () => {

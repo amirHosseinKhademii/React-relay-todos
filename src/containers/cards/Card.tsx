@@ -1,18 +1,23 @@
+import { ICTrash } from "icons/ICTrash";
 import { TCard, useCard } from "./hooks/use-card";
 export const Card = ({ card, __id }: TCard) => {
   const { onDelete } = useCard({ card, __id });
   return (
     <li
-      className="bg-amber-200 border border-amber-300 rounded p-2 cursor-pointer flex items-center justify-between"
+      className=" border border-cyan-500 bg-cyan-200 rounded p-2 cursor-pointer flex items-center justify-between"
       key={card.node?.id}
     >
-      <span> {card.node?.title}</span>
-      <button
-        className="bg-red-200 border border-red-300 rounded p-2"
+      <div className="flex items-center space-x-2">
+        <input type="checkbox" className="w-5 h-5" />
+        <span> {card.node?.title}</span>
+      </div>
+
+      <ICTrash
+        className="text-red-500 w-6"
         onClick={() => onDelete(card.node?.id!)}
       >
         Delete
-      </button>
+      </ICTrash>
     </li>
   );
 };

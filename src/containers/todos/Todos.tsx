@@ -6,7 +6,7 @@ export const Todos = () => {
 
   return (
     <ul
-      className="  border border-green-500 bg-green-200 rounded p-4 shadow-md flex flex-col space-y-2 "
+      className="  border  rounded p-4 shadow-md flex flex-col space-y-2 border-gray-300 bg-gray-100 "
       onClick={(e) => e.stopPropagation()}
     >
       {data.todos.edges?.map((todo) => (
@@ -14,7 +14,7 @@ export const Todos = () => {
           key={todo.node?.id}
           fallback={
             <div
-              className={`mx-auto w-full rounded border border-gray-300  p-4 shadow-lg bg-gray-100`}
+              className={`mx-auto w-full border-green-500 bg-green-200 rounded border  p-4 shadow-lg `}
             />
           }
         >

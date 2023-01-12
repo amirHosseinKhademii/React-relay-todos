@@ -1,8 +1,8 @@
 import { TodoUpdateMutation } from "../graphql/Todo.mutations";
 import type { TodoUpdateMutation as TTodoUpdateMutation } from "../graphql/__generated__/TodoUpdateMutation.graphql";
 import { useLazyLoadQuery, useMutation } from "react-relay";
-import type { TodoQuery as TTodoQuery } from "containers/todo/graphql/__generated__/TodoQuery.graphql";
-import { TodoQuery } from "containers/todo/graphql/Todo.queries";
+import type { TodoQuery as TTodoQuery } from "containers/todos/graphql/__generated__/TodoQuery.graphql";
+import { TodoQuery } from "containers/todos/graphql/Todo.queries";
 import { useId } from "react";
 
 export const useTodo = (id: string) => {

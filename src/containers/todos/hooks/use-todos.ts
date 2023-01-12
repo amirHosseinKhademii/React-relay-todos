@@ -5,12 +5,12 @@ import {
 } from "react-relay";
 import { useTransition } from "react";
 import { GraphQLSubscriptionConfig } from "relay-runtime";
-import { TodosQuery } from "containers/todo/graphql/Todos.queries";
-import { TodosSubscription } from "containers/todo/graphql/Todos.subscriptions";
-import type { TodosQuery as TTodosQuery } from "containers/todo/graphql/__generated__/TodosQuery.graphql";
-import type { TodosPaginationFrgament } from "containers/todo/graphql/__generated__/TodosPaginationFrgament.graphql";
-import type { TodosFragment$key } from "containers/todo/graphql/__generated__/TodosFragment.graphql";
-import type { TodosSubscription as TTodosSubscription } from "containers/todo/graphql/__generated__/TodosSubscription.graphql";
+import { TodosQuery } from "containers/todos/graphql/Todos.queries";
+import { TodosSubscription } from "containers/todos/graphql/Todos.subscriptions";
+import type { TodosQuery as TTodosQuery } from "containers/todos/graphql/__generated__/TodosQuery.graphql";
+import type { TodosPaginationFrgament } from "containers/todos/graphql/__generated__/TodosPaginationFrgament.graphql";
+import type { TodosFragment$key } from "containers/todos/graphql/__generated__/TodosFragment.graphql";
+import type { TodosSubscription as TTodosSubscription } from "containers/todos/graphql/__generated__/TodosSubscription.graphql";
 import { TodosFragment } from "../graphql/Todos.fragment";
 
 const subscriptionConfig: GraphQLSubscriptionConfig<TTodosSubscription> = {

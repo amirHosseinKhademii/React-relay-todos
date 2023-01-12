@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import { useMutation } from "react-relay";
-import { TodoAddMutation } from "containers/todo/graphql/Todo.mutations";
-import { TodoAddMutation as TTodoAddMutation } from "containers/todo/graphql/__generated__/TodoAddMutation.graphql";
+import { TodoAddMutation } from "containers/todos/graphql/Todo.mutations";
+import { TodoAddMutation as TTodoAddMutation } from "containers/todos/graphql/__generated__/TodoAddMutation.graphql";
 
 export const useTodoPage = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -20,14 +20,14 @@ export const Cards = ({ todo, todoId }: TCards) => {
           Create Card
         </button>
         <ul
-          className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 "
+          className="  rounded p-4  flex flex-col space-y-2 "
           onClick={(e) => e.stopPropagation()}
         >
           {data.cards.edges?.map((card) => (
             <Suspense
               key={card.node?.id}
               fallback={
-                <li className="bg-amber-200 border border-amber-300 rounded p-2 cursor-pointer flex items-center justify-between"></li>
+                <li className="border-cyan-500 bg-cyan-200 border  rounded p-2 cursor-pointer flex items-center justify-between"></li>
               }
             >
               <Card {...{ card }} __id={data.cards.__id} />
