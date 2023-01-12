@@ -1,5 +1,4 @@
 import { Modal } from "components";
-
 import { Todos } from "containers/todo/Todos";
 import { useId, useState } from "react";
 import { useMutation } from "react-relay";
@@ -14,7 +13,6 @@ export const TodosPage = () => {
 
   const [mutate] = useMutation<TTodosPageMutation>(TodosPageMutation);
   const clientMutationId = useId();
-  const todoId = useId();
 
   return (
     <>
@@ -37,6 +35,7 @@ export const TodosPage = () => {
               const description: string = e.target.description.value;
               mutate({
                 variables: {
+                  connections: ["client:root:__List__todos_connection"],
                   input: {
                     title,
                     description,
@@ -45,46 +44,19 @@ export const TodosPage = () => {
                 },
                 optimisticResponse: {
                   addTodo: {
-                    todo: {
-                      id: todoId,
-                      isCompleted: false,
-                      description,
-                      title,
+                    addTodoEdge: {
+                      node: {
+                        id: clientMutationId,
+                        title,
+                        description,
+                        isCompleted: false,
+                      },
+                      cursor: clientMutationId,
                     },
                     clientMutationId,
                   },
                 },
-                optimisticUpdater: (proxyStore) => {
-                  // read the todos from the store
-                  const todos = proxyStore.getRoot().getLinkedRecords("todos");
-
-                  // create a new todo with the input data
-                  const newTodo = {
-                    id: todoId,
-                    isCompleted: false,
-                    description,
-                    title,
-                  };
-                  console.log(todos);
-
-                  // append the new todo to the list of todos
-                  //   proxyStore
-                  //     .getRoot()
-                  //     .setLinkedRecords([...todos, newTodo], "todos");
-                },
-                // updater: (proxyStore) => {
-                //   // read the todos from the store
-                //   const todos = proxyStore.getRoot().getLinkedRecords("todos");
-                //   // update the todo with the actual id returned by the server
-                //   const updatedTodos = todos.map((todo) => {
-                //     if (todo.id === todoId) {
-                //       return proxyStore.get(todo.id);
-                //     }
-                //     return todo;
-                //   });
-                //   // update the store with the updated todos
-                //   proxyStore.getRoot().setLinkedRecords(updatedTodos, "todos");
-                // },
+                //optimisticUpdater: onClose,
               });
             }}
           >

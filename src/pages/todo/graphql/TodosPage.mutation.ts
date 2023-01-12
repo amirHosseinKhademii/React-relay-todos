@@ -1,11 +1,14 @@
 import { graphql } from "react-relay";
 
 export const TodosPageMutation = graphql`
-  mutation TodosPageMutation($input: AddTodoInput!) {
+  mutation TodosPageMutation($input: AddTodoInput!, $connections: [ID!]!) {
     addTodo(input: $input) {
       clientMutationId
-      todo {
-        ...TodoMutationFragment
+      addTodoEdge @appendEdge(connections: $connections) {
+        cursor
+        node {
+          ...TodoMutationFragment
+        }
       }
     }
   }

@@ -18,7 +18,7 @@ export const useCards = ({ todo }: TCards) => {
   const [isPending, startTransition] = useTransition();
   const { data, loadNext } = usePaginationFragment(TodoCardsFragment, todo);
 
-  useSubscription(subscriptionConfig);
+  //useSubscription(subscriptionConfig);
 
   const onLoadMore = () =>
     startTransition(() => {

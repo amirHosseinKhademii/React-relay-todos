@@ -28,7 +28,7 @@ export const useTodos = () => {
     TodosFragment$key
   >(TodosFragment, todos);
 
-  useSubscription(subscriptionConfig);
+  //useSubscription(subscriptionConfig);
 
   const onLoadMore = () =>
     startTransition(() => {
