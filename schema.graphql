@@ -6,11 +6,11 @@ interface Node {
   id: ID!
 }
 
-type Card implements Node {
+type Comment implements Node {
   id: ID!
   title: String!
   description: String
-  isCompleted: Boolean
+  cardId: ID!
   created_at: DateTime
   updated_at: DateTime
 }
@@ -19,6 +19,57 @@ type Card implements Node {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type CommentConnection {
+  edges: [CommentEdge!]
+  pageInfo: CommentPageInfo
+}
+
+type CommentEdge {
+  cursor: String
+  node: Comment
+}
+
+type CommentPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type User implements Node {
+  id: ID!
+  userName: String!
+  fullName: String!
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+type AddCommentPayload {
+  addCommentEdge: CommentResponseEdge!
+  clientMutationId: String
+}
+
+type CommentResponseEdge {
+  cursor: String
+  node: Comment
+}
+
+type Card implements Node {
+  id: ID!
+  title: String!
+  description: String
+  isCompleted: Boolean
+  comments(
+    before: String
+    after: String
+    first: Float
+    last: Float
+    query: String
+  ): CommentConnection!
+  created_at: DateTime
+  updated_at: DateTime
+}
 
 type CardConnection {
   edges: [CardEdge!]
@@ -35,14 +86,6 @@ type CardPageInfo {
   endCursor: String
   hasPreviousPage: Boolean!
   hasNextPage: Boolean!
-}
-
-type User implements Node {
-  id: ID!
-  userName: String!
-  fullName: String!
-  created_at: DateTime
-  updated_at: DateTime
 }
 
 type AddCardPayload {
@@ -133,6 +176,14 @@ type Query {
     last: Float
     query: String
   ): CardConnection!
+  comments(
+    before: String
+    after: String
+    first: Float
+    last: Float
+    cardId: ID!
+    query: String
+  ): CommentConnection!
 }
 
 type Mutation {
@@ -143,6 +194,7 @@ type Mutation {
   addCard(input: AddCardInput!): AddCardPayload
   updateCard(input: UpdateCardInput!): UpdateCardPayload
   deleteCard(input: DeleteCardInput!): DeleteCardPayload
+  addComment(input: AddCommentInput!): AddCommentPayload
 }
 
 input AddTodoInput {
@@ -176,6 +228,13 @@ input UpdateCardInput {
 
 input DeleteCardInput {
   id: ID!
+  clientMutationId: String
+}
+
+input AddCommentInput {
+  cardId: ID!
+  title: String!
+  description: String = ""
   clientMutationId: String
 }
 
