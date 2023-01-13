@@ -17,3 +17,12 @@ export const TodosFragment = graphql`
     }
   }
 `;
+
+export const TodosBaseFragment = graphql`
+  fragment TodosBaseFragment on Todo {
+    title
+    description
+    id
+    isCompleted
+  }
+`;

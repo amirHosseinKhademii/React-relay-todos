@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a0ec525ee04dd225729c012a1fa8f4f9>>
+ * @generated SignedSource<<b0ad7d3a2fa4d1e8628455fd940b4565>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,23 +10,23 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TodoMutationFragment$data = {
+export type CardsBaseFragment$data = {
   readonly description: string | null;
   readonly id: string;
   readonly isCompleted: boolean | null;
   readonly title: string;
-  readonly " $fragmentType": "TodoMutationFragment";
+  readonly " $fragmentType": "CardsBaseFragment";
 };
-export type TodoMutationFragment$key = {
-  readonly " $data"?: TodoMutationFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"TodoMutationFragment">;
+export type CardsBaseFragment$key = {
+  readonly " $data"?: CardsBaseFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CardsBaseFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "TodoMutationFragment",
+  "name": "CardsBaseFragment",
   "selections": [
     {
       "alias": null,
@@ -57,10 +57,10 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Todo",
+  "type": "Card",
   "abstractKey": null
 };
 
-(node as any).hash = "6a8aab3cbe84b39a8fc1b92226304582";
+(node as any).hash = "824334f151e88ad54a90a61e5b7b3821";
 
 export default node;

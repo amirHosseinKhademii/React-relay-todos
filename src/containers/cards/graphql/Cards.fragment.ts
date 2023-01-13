@@ -17,11 +17,18 @@ export const CardsFragment = graphql`
       }
       edges {
         node {
-          __id
-          id
-          title
+          ...CardsBaseFragment
         }
       }
     }
+  }
+`;
+
+export const CardsBaseFragment = graphql`
+  fragment CardsBaseFragment on Card {
+    title
+    description
+    id
+    isCompleted
   }
 `;

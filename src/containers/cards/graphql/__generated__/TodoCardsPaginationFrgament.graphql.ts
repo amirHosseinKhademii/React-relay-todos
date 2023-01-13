@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1740783ff21bfbbf546db7a934ddd51b>>
+ * @generated SignedSource<<b68907b1a53d8378d6b90b526d71972a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -95,18 +95,6 @@ v8 = {
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-},
-v9 = {
-  "kind": "ClientExtension",
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "__id",
-      "storageKey": null
-    }
-  ]
 };
 return {
   "fragment": {
@@ -229,7 +217,6 @@ return {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          (v8/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -237,7 +224,21 @@ return {
                             "name": "title",
                             "storageKey": null
                           },
-                          (v9/*: any*/),
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "description",
+                            "storageKey": null
+                          },
+                          (v8/*: any*/),
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "isCompleted",
+                            "storageKey": null
+                          },
                           (v7/*: any*/)
                         ],
                         "storageKey": null
@@ -252,7 +253,18 @@ return {
                     ],
                     "storageKey": null
                   },
-                  (v9/*: any*/)
+                  {
+                    "kind": "ClientExtension",
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "__id",
+                        "storageKey": null
+                      }
+                    ]
+                  }
                 ],
                 "storageKey": null
               },
@@ -275,16 +287,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7463bdd4dbabe4522cdfd21e53134489",
+    "cacheID": "e8d9389f575a7c40a9e2fb0d1ab1222a",
     "id": null,
     "metadata": {},
     "name": "TodoCardsPaginationFrgament",
     "operationKind": "query",
-    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardsBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        ...CardsBaseFragment\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "bc8decddc50e3a578e1338bb7b1bcccc";
+(node as any).hash = "39ec4611d6be1a9069b7b0881e82d2c7";
 
 export default node;

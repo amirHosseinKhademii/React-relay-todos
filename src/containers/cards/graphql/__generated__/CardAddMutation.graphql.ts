@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<be05f8725a328f35f4d8567d3d3e670f>>
+ * @generated SignedSource<<8c314d7a7269b33682341f60b2f4da1f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,7 +25,7 @@ export type CardAddMutation$data = {
     readonly addCardEdge: {
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CardMutationFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"CardsBaseFragment">;
       } | null;
     };
     readonly clientMutationId: string | null;
@@ -107,7 +107,7 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "CardMutationFragment"
+                    "name": "CardsBaseFragment"
                   }
                 ],
                 "storageKey": null
@@ -177,6 +177,13 @@ return {
                     "kind": "ScalarField",
                     "name": "id",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "isCompleted",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -211,16 +218,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9df3ece8a25eff46ac1122b7b3e6f063",
+    "cacheID": "3d58d887bfe460ee7f57585df52d6e52",
     "id": null,
     "metadata": {},
     "name": "CardAddMutation",
     "operationKind": "mutation",
-    "text": "mutation CardAddMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardMutationFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardMutationFragment on Card {\n  title\n  description\n  id\n}\n"
+    "text": "mutation CardAddMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardsBaseFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardsBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ad97c8d285cee089f2893a213ea5c893";
+(node as any).hash = "348578217339585b807dda1d412da693";
 
 export default node;

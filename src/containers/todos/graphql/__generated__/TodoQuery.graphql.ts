@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5a9fbac49fdbb99d32eafdacf9681c4b>>
+ * @generated SignedSource<<bde1138853a6be6e4365cd879e354e1c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -83,19 +83,7 @@ v7 = [
     "name": "first",
     "value": 2
   }
-],
-v8 = {
-  "kind": "ClientExtension",
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "__id",
-      "storageKey": null
-    }
-  ]
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -219,9 +207,10 @@ return {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
                           (v3/*: any*/),
-                          (v8/*: any*/),
+                          (v4/*: any*/),
+                          (v2/*: any*/),
+                          (v5/*: any*/),
                           (v6/*: any*/)
                         ],
                         "storageKey": null
@@ -236,7 +225,18 @@ return {
                     ],
                     "storageKey": null
                   },
-                  (v8/*: any*/)
+                  {
+                    "kind": "ClientExtension",
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "__id",
+                        "storageKey": null
+                      }
+                    ]
+                  }
                 ],
                 "storageKey": "cards(first:2)"
               },
@@ -259,12 +259,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8e730e9d9e6adc3b2ac427d2987f3065",
+    "cacheID": "7e710a21618b9d22b851a28f4bf36cac",
     "id": null,
     "metadata": {},
     "name": "TodoQuery",
     "operationKind": "query",
-    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardsBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        ...CardsBaseFragment\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();

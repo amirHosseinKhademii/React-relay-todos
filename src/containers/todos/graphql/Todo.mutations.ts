@@ -5,7 +5,7 @@ export const TodoUpdateMutation = graphql`
     updateTodo(input: $input) {
       clientMutationId
       todo {
-        ...TodoMutationFragment
+        ...TodosBaseFragment
       }
     }
   }
@@ -17,18 +17,11 @@ export const TodoAddMutation = graphql`
       addTodoEdge {
         cursor
         node @appendNode(connections: $connections, edgeTypeName: "TodoEdge") {
-          ...TodoMutationFragment
+          ...TodosBaseFragment
         }
       }
     }
   }
 `;
 
-export const TodoMutationFragment = graphql`
-  fragment TodoMutationFragment on Todo {
-    title
-    description
-    id
-    isCompleted
-  }
-`;
+

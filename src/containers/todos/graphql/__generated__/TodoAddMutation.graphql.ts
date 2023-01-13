@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1242cf29584f738a3c4e5e8c922390a2>>
+ * @generated SignedSource<<48e336fdd6fbb900dba319936a24588b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,7 +24,7 @@ export type TodoAddMutation$data = {
     readonly addTodoEdge: {
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"TodoMutationFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"TodosBaseFragment">;
       } | null;
     };
     readonly clientMutationId: string | null;
@@ -106,7 +106,7 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "TodoMutationFragment"
+                    "name": "TodosBaseFragment"
                   }
                 ],
                 "storageKey": null
@@ -217,16 +217,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "17c5798ac1895c3014649469c259c21e",
+    "cacheID": "d76d40f0a798d2bb03d019af7a81ee04",
     "id": null,
     "metadata": {},
     "name": "TodoAddMutation",
     "operationKind": "mutation",
-    "text": "mutation TodoAddMutation(\n  $input: AddTodoInput!\n) {\n  addTodo(input: $input) {\n    clientMutationId\n    addTodoEdge {\n      cursor\n      node {\n        ...TodoMutationFragment\n        id\n      }\n    }\n  }\n}\n\nfragment TodoMutationFragment on Todo {\n  title\n  description\n  id\n  isCompleted\n}\n"
+    "text": "mutation TodoAddMutation(\n  $input: AddTodoInput!\n) {\n  addTodo(input: $input) {\n    clientMutationId\n    addTodoEdge {\n      cursor\n      node {\n        ...TodosBaseFragment\n        id\n      }\n    }\n  }\n}\n\nfragment TodosBaseFragment on Todo {\n  title\n  description\n  id\n  isCompleted\n}\n"
   }
 };
 })();
 
-(node as any).hash = "213a183b44dd852ac3b4853810d7eb5c";
+(node as any).hash = "dc2fbe5aad30ab8356f9feac32363a08";
 
 export default node;

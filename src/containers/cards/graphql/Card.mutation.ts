@@ -7,18 +7,10 @@ export const CardAddMutation = graphql`
       addCardEdge {
         cursor
         node @appendNode(connections: $connections, edgeTypeName: "CardEdge") {
-          ...CardMutationFragment
+          ...CardsBaseFragment
         }
       }
     }
-  }
-`;
-
-export const CardMutationFragment = graphql`
-  fragment CardMutationFragment on Card {
-    title
-    description
-    id
   }
 `;
 
@@ -27,6 +19,17 @@ export const CardDeleteMutation = graphql`
     deleteCard(input: $input) {
       clientMutationId
       id @deleteEdge(connections: $connections)
+    }
+  }
+`;
+
+export const CardUpdateMutation = graphql`
+  mutation CardUpdateMutation($input: UpdateCardInput!) {
+    updateCard(input: $input) {
+      clientMutationId
+      card {
+        ...CardsBaseFragment
+      }
     }
   }
 `;
