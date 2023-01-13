@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ea54155ac7ff32296cf011b6aee25691>>
+ * @generated SignedSource<<517934cfbb88893ec499d10b5466153e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,6 +15,7 @@ export type CardsUpdatedSubscription$data = {
     readonly __typename: "Card";
     readonly description: string | null;
     readonly id: string;
+    readonly isCompleted: boolean | null;
     readonly title: string;
   };
 };
@@ -60,6 +61,13 @@ var v0 = [
         "kind": "ScalarField",
         "name": "description",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "isCompleted",
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -83,16 +91,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "3ebed174c866c40ad1d72e517d666a2d",
+    "cacheID": "88027789de316ed3207600f42f346adc",
     "id": null,
     "metadata": {},
     "name": "CardsUpdatedSubscription",
     "operationKind": "subscription",
-    "text": "subscription CardsUpdatedSubscription {\n  cardUpdated {\n    __typename\n    id\n    title\n    description\n  }\n}\n"
+    "text": "subscription CardsUpdatedSubscription {\n  cardUpdated {\n    __typename\n    id\n    title\n    description\n    isCompleted\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3d708008a6933693927e7375db0fc780";
+(node as any).hash = "421919d440c20dbdd6604252671e383d";
 
 export default node;

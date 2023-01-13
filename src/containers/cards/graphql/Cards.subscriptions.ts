@@ -7,6 +7,7 @@ export const CardsSubscription = graphql`
       id
       title
       description
+      isCompleted
     }
   }
 `;
@@ -18,6 +19,7 @@ export const CardsUpdatedSubscription = graphql`
       id
       title
       description
+      isCompleted
     }
   }
 `;

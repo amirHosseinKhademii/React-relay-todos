@@ -3,6 +3,7 @@ import { TCard, useCard } from "./hooks/use-card";
 
 export const Card = ({ card, __id }: TCard) => {
   const { onDelete, onCompleteToggle } = useCard({ card, __id });
+  console.log(card);
 
   return (
     <li

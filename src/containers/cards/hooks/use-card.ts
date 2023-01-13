@@ -3,9 +3,9 @@ import { useMutation } from "react-relay";
 import {
   CardDeleteMutation,
   CardUpdateMutation,
-} from "../graphql/Card.mutation";
-import { CardDeleteMutation as TCardDeleteMutation } from "../graphql/__generated__/CardDeleteMutation.graphql";
-import { CardUpdateMutation as TCardUpdateMutation } from "../graphql/__generated__/CardUpdateMutation.graphql";
+} from "containers/cards/graphql/Card.mutation";
+import { CardDeleteMutation as TCardDeleteMutation } from "containers/cards/graphql/__generated__/CardDeleteMutation.graphql";
+import { CardUpdateMutation as TCardUpdateMutation } from "containers/cards/graphql/__generated__/CardUpdateMutation.graphql";
 
 export type TCard = {
   __id?: string;
