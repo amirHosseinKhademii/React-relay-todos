@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6b82f9b44d3f678e66dbb9ba3dca4709>>
+ * @generated SignedSource<<bd1f1a28a3df17c4cf865663f952d932>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,7 +15,10 @@ export type CardsFragment$data = {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CardsBaseFragment">;
+        readonly description: string | null;
+        readonly id: string;
+        readonly isCompleted: boolean | null;
+        readonly title: string;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -35,7 +38,14 @@ import TodoCardsPaginationFrgament_graphql from './TodoCardsPaginationFrgament.g
 const node: ReaderFragment = (function(){
 var v0 = [
   "cards"
-];
+],
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
 return {
   "argumentDefinitions": [
     {
@@ -154,9 +164,26 @@ return {
               "plural": false,
               "selections": [
                 {
+                  "alias": null,
                   "args": null,
-                  "kind": "FragmentSpread",
-                  "name": "CardsBaseFragment"
+                  "kind": "ScalarField",
+                  "name": "title",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "description",
+                  "storageKey": null
+                },
+                (v1/*: any*/),
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "isCompleted",
+                  "storageKey": null
                 },
                 {
                   "alias": null,
@@ -193,19 +220,13 @@ return {
       ],
       "storageKey": null
     },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    }
+    (v1/*: any*/)
   ],
   "type": "Todo",
   "abstractKey": null
 };
 })();
 
-(node as any).hash = "39ec4611d6be1a9069b7b0881e82d2c7";
+(node as any).hash = "7fa66b887db19dbaaad03becf0652fe2";
 
 export default node;

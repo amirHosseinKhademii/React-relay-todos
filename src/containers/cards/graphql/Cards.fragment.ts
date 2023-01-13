@@ -17,7 +17,10 @@ export const CardsFragment = graphql`
       }
       edges {
         node {
-          ...CardsBaseFragment
+          title
+          description
+          id
+          isCompleted
         }
       }
     }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bde1138853a6be6e4365cd879e354e1c>>
+ * @generated SignedSource<<1d9b0368a2922fb76d20cdd911db4572>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -259,12 +259,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7e710a21618b9d22b851a28f4bf36cac",
+    "cacheID": "b83b0ff1f01a7948d7007648679141a8",
     "id": null,
     "metadata": {},
     "name": "TodoQuery",
     "operationKind": "query",
-    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardsBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        ...CardsBaseFragment\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        title\n        description\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b68907b1a53d8378d6b90b526d71972a>>
+ * @generated SignedSource<<6986111d50f64d3dfcaa53ce126dd8d4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -287,16 +287,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e8d9389f575a7c40a9e2fb0d1ab1222a",
+    "cacheID": "88bcf329c9a755a6d10b3ae7a71cecd4",
     "id": null,
     "metadata": {},
     "name": "TodoCardsPaginationFrgament",
     "operationKind": "query",
-    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardsBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        ...CardsBaseFragment\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        title\n        description\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "39ec4611d6be1a9069b7b0881e82d2c7";
+(node as any).hash = "7fa66b887db19dbaaad03becf0652fe2";
 
 export default node;

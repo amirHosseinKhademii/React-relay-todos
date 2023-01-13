@@ -13,8 +13,8 @@ export type TCard = {
     readonly node: {
       readonly id: string;
       readonly title: string;
-      readonly description: string;
-      readonly isCompleted: boolean;
+      readonly description: string | null;
+      readonly isCompleted: boolean | null;
     } | null;
   };
 };
@@ -42,7 +42,7 @@ export const useCard = ({ __id, card }: TCard) => {
         },
       });
     },
-    onUpdate: () =>
+    onCompleteToggle: () =>
       updateCard({
         variables: {
           input: {
@@ -52,8 +52,8 @@ export const useCard = ({ __id, card }: TCard) => {
           },
         },
         optimisticResponse: {
-          updateTodo: {
-            todo: {
+          updateCard: {
+            card: {
               id: card.node?.id!,
               isCompleted: !card.node?.isCompleted,
               description: card.node?.description,

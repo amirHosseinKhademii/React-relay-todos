@@ -72,6 +72,7 @@ export const useCards = ({ todo, todoId }: TCards) => {
                 id: clientMutationId,
                 title,
                 description,
+                isCompleted: false,
               },
               cursor: clientMutationId,
             },

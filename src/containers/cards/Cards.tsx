@@ -20,7 +20,7 @@ export const Cards = ({ todo, todoId }: TCards) => {
           Create Card
         </button>
         <ul
-          className="  rounded p-4  flex flex-col space-y-2 "
+          className="rounded p-4  flex flex-col space-y-2 "
           onClick={(e) => e.stopPropagation()}
         >
           {data.cards.edges?.map((card) => (
@@ -35,7 +35,7 @@ export const Cards = ({ todo, todoId }: TCards) => {
           ))}
           {data.cards.pageInfo?.hasNextPage && (
             <button
-              className="bg-green-200 border border-green-300 rounded p-2"
+              className="bg-amber-200 border border-amber-300 rounded p-2"
               onClick={onLoadMore}
               disabled={isPending}
             >

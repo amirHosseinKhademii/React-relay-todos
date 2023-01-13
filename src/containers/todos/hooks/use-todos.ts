@@ -20,7 +20,7 @@ const subscriptionConfig: GraphQLSubscriptionConfig<TTodosSubscription> = {
 
 export const useTodos = () => {
   const [isPending, startTransition] = useTransition();
-  const todos = useLazyLoadQuery<TTodosQuery>(TodosQuery, { first: 100 });
+  const todos = useLazyLoadQuery<TTodosQuery>(TodosQuery, { first: 3 });
   const { data, loadNext } = usePaginationFragment<
     TodosPaginationFrgament,
     TodosFragment$key
