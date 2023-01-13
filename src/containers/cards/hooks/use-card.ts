@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { useMutation } from "react-relay";
 import {
   CardDeleteMutation,
@@ -20,11 +20,14 @@ export type TCard = {
 };
 
 export const useCard = ({ __id, card }: TCard) => {
+  const [isComments, setIsComments] = useState(false);
   const [deleteCard] = useMutation<TCardDeleteMutation>(CardDeleteMutation);
   const [updateCard] = useMutation<TCardUpdateMutation>(CardUpdateMutation);
   const clientMutationId = useId();
 
   return {
+    isComments,
+    onCommentsToggle: () => setIsComments((prev) => !prev),
     onDelete: (id: string) => {
       deleteCard({
         variables: {

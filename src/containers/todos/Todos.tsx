@@ -23,7 +23,7 @@ export const Todos = () => {
       ))}
       {data.todos.pageInfo?.hasNextPage && (
         <button
-          className="bg-indigo-200 border border-indigo-300 rounded p-2"
+          className="bg-gray-300 border  rounded p-2"
           onClick={onLoadMore}
           disabled={isPending}
         >

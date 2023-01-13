@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<922bb6dd3861da656c52a55ecbaea289>>
+ * @generated SignedSource<<2c0d18411473b178966fefcf73aa561f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,7 +15,11 @@ export type CommentsQueryFragment$data = {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly created_at: any | null;
+        readonly description: string | null;
         readonly id: string;
+        readonly title: string;
+        readonly updated_at: any | null;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -166,6 +170,34 @@ return {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
+                  "name": "title",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "description",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "created_at",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "updated_at",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
                   "name": "__typename",
                   "storageKey": null
                 }
@@ -203,6 +235,6 @@ return {
 };
 })();
 
-(node as any).hash = "f959f077d66b4c6432222393bc33e9fd";
+(node as any).hash = "ee7b253883b3843357055415d89296b5";
 
 export default node;

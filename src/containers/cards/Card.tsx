@@ -1,9 +1,13 @@
 import { Comments } from "containers/comments/Comments";
 import { ICTrash } from "icons/ICTrash";
+import { Suspense } from "react";
 import { TCard, useCard } from "./hooks/use-card";
 
 export const Card = ({ card, __id }: TCard) => {
-  const { onDelete, onCompleteToggle } = useCard({ card, __id });
+  const { onDelete, onCompleteToggle, isComments, onCommentsToggle } = useCard({
+    card,
+    __id,
+  });
 
   return (
     <li
@@ -30,8 +34,18 @@ export const Card = ({ card, __id }: TCard) => {
           Delete
         </ICTrash>
       </div>
-
-      <Comments cardId={card.node?.id!} />
+      {isComments ? (
+        <Suspense fallback={<div>Loading comments...</div>}>
+          <Comments cardId={card.node?.id!} />
+        </Suspense>
+      ) : (
+        <button
+          className="text-centet text-xs w-full  bg-cyan-300 p-2 rounded mt-2"
+          onClick={onCommentsToggle}
+        >
+          Comments
+        </button>
+      )}
     </li>
   );
 };

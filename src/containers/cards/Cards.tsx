@@ -14,13 +14,13 @@ export const Cards = ({ todo, todoId }: TCards) => {
     <>
       <div>
         <button
-          className=" mb-4 p-4 rounded bg-gray-600 text-white text-center w-full"
+          className=" mb-4 p-2 rounded bg-gray-600 text-white text-center w-full"
           onClick={onOpen}
         >
           Create Card
         </button>
         <ul
-          className="rounded p-4  flex flex-col space-y-2 "
+          className="rounded p-2  flex flex-col space-y-2 "
           onClick={(e) => e.stopPropagation()}
         >
           {data.cards.edges?.map((card) => (

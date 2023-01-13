@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bf4cb38d284ee68c71c1c3e8d67d4419>>
+ * @generated SignedSource<<bfc8095699e0f9fa7c37705a67ea6dab>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -186,6 +186,34 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
+                    "name": "title",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "description",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "created_at",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "updated_at",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "__typename",
                     "storageKey": null
                   }
@@ -231,12 +259,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8d478283597464c1cbc03235bd88c8a1",
+    "cacheID": "c5d1696c8d1fe1631f20032a5cc07b84",
     "id": null,
     "metadata": {},
     "name": "CommentsQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        description\n        created_at\n        updated_at\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();

@@ -27,6 +27,10 @@ export const CommentsQueryFragment = graphql`
       edges {
         node {
           id
+          title
+          description
+          created_at
+          updated_at
         }
       }
     }
