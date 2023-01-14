@@ -1,3 +1,4 @@
+import { ICLoadMore } from "icons/ICLoadMore";
 import { useComments } from "./hooks";
 
 export const Comments = ({ cardId }: { cardId: string }) => {
@@ -9,7 +10,7 @@ export const Comments = ({ cardId }: { cardId: string }) => {
         {data?.comments?.edges?.map((comment) => (
           <div
             key={comment.node?.id}
-            className="text-xs text-gray-600 p-2 w-full rounded border bg-cyan-100"
+            className="text-xs text-gray-600 p-2 w-full rounded border bg-cyan-300"
           >
             {comment.node?.title}
           </div>
@@ -17,13 +18,11 @@ export const Comments = ({ cardId }: { cardId: string }) => {
       </div>
 
       {data.comments.pageInfo?.hasNextPage && (
-        <button
-          className="text-centet text-xs w-full  bg-cyan-300 p-2 rounded"
+        <ICLoadMore
+          className=" text-xs w-6 ml-auto text-cyan-300 "
           onClick={onLoadMore}
-          disabled={isPending}
-        >
-          Load more comments
-        </button>
+          //disabled={isPending}
+        />
       )}
       {isPending && "Loading more ..."}
     </div>

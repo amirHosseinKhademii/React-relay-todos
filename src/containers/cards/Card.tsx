@@ -1,5 +1,8 @@
 import { Comments } from "containers/comments/Comments";
+import { ICComments } from "icons/ICComments";
+import { ICDone } from "icons/ICDone";
 import { ICTrash } from "icons/ICTrash";
+import { ICUnDone } from "icons/ICUnDone";
 import { Suspense } from "react";
 import { TCard, useCard } from "./hooks/use-card";
 
@@ -11,40 +14,40 @@ export const Card = ({ card, __id }: TCard) => {
 
   return (
     <li
-      className={`border border-cyan-500  rounded p-2 cursor-pointer overflow-hidden  ${
-        card.node?.isCompleted ? "bg-cyan-400" : "bg-cyan-200"
+      className={`border border-cyan-500  rounded p-2 cursor-pointer overflow-hidden bg-cyan-200 w-full  ${
+        card.node?.isCompleted ? "bg-cyan-200" : "bg-cyan-100"
       }`}
       key={card.node?.id}
     >
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            className="w-5 h-5"
-            onChange={onCompleteToggle}
-            checked={card.node?.isCompleted ?? false}
-          />
-          <span> {card.node?.title}</span>
-        </div>
+        <span> {card.node?.title}</span>
 
-        <ICTrash
-          className="text-red-500 w-6"
-          onClick={() => onDelete(card.node?.id!)}
-        >
-          Delete
-        </ICTrash>
+        <div className="flex items-center space-x-2">
+          {card.node?.isCompleted ? (
+            <ICUnDone
+              className="text-cyan-800 w-5"
+              onClick={onCompleteToggle}
+            />
+          ) : (
+            <ICDone className="text-gray-300 w-5" onClick={onCompleteToggle} />
+          )}
+          <ICTrash
+            className="text-red-600 w-5"
+            onClick={() => onDelete(card.node?.id!)}
+          >
+            Delete
+          </ICTrash>
+        </div>
       </div>
       {isComments ? (
         <Suspense fallback={<div>Loading comments...</div>}>
           <Comments cardId={card.node?.id!} />
         </Suspense>
       ) : (
-        <button
-          className="text-centet text-xs w-full  bg-cyan-300 p-2 rounded mt-2"
+        <ICComments
+          className=" text-green-300 w-5 mx-auto mt-2"
           onClick={onCommentsToggle}
-        >
-          Comments
-        </button>
+        />
       )}
     </li>
   );

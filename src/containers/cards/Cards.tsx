@@ -1,4 +1,6 @@
 import { Modal } from "components";
+import { ICLoadMore } from "icons/ICLoadMore";
+import { ICPlusCard } from "icons/ICPlusCard";
 import { Suspense } from "react";
 import { Card } from "./Card";
 import { TCards, useCards } from "./hooks";
@@ -13,12 +15,12 @@ export const Cards = ({ todo, todoId }: TCards) => {
   return (
     <>
       <div>
-        <button
-          className=" mb-4 p-2 rounded bg-gray-600 text-white text-center w-full"
+        <ICPlusCard
+          className=" mb-2 p-2 w-12 text-gray-600 ml-auto cursor-pointer "
           onClick={onOpen}
         >
           Create Card
-        </button>
+        </ICPlusCard>
         <ul
           className="rounded p-2  flex flex-col space-y-2 "
           onClick={(e) => e.stopPropagation()}
@@ -34,13 +36,11 @@ export const Cards = ({ todo, todoId }: TCards) => {
             </Suspense>
           ))}
           {data.cards.pageInfo?.hasNextPage && (
-            <button
-              className="bg-amber-200 border border-amber-300 rounded p-2"
+            <ICLoadMore
+              className="w-8 text-cyan-300 ml-auto cursor-pointer"
               onClick={onLoadMore}
-              disabled={isPending}
-            >
-              Load Next Cards
-            </button>
+              // disabled={isPending}
+            />
           )}
           {isPending && "Loading more ..."}
         </ul>
@@ -48,7 +48,7 @@ export const Cards = ({ todo, todoId }: TCards) => {
       {isOpen && (
         <Modal {...{ onClose }}>
           <form
-            className="w-full flex flex-col space-y-8 mt-12"
+            className="w-full flex flex-col space-y-8 mt-4"
             {...{ onSubmit }}
           >
             <input
