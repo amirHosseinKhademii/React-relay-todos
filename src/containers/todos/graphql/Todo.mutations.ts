@@ -24,4 +24,11 @@ export const TodoAddMutation = graphql`
   }
 `;
 
-
+export const TodoDeleteMutation = graphql`
+  mutation TodoDeleteMutation($input: DeleteTodoInput!, $connections: [ID!]!) {
+    deleteTodo(input: $input) {
+      clientMutationId
+      id @deleteEdge(connections: $connections)
+    }
+  }
+`;

@@ -1,19 +1,24 @@
-import { TodoUpdateMutation } from "containers/todos/graphql/Todo.mutations";
+import {
+  TodoDeleteMutation,
+  TodoUpdateMutation,
+} from "containers/todos/graphql/Todo.mutations";
 import type { TodoUpdateMutation as TTodoUpdateMutation } from "containers/todos/graphql/__generated__/TodoUpdateMutation.graphql";
 import { useLazyLoadQuery, useMutation } from "react-relay";
 import type { TodoQuery as TTodoQuery } from "containers/todos/graphql/__generated__/TodoQuery.graphql";
 import { TodoQuery } from "containers/todos/graphql/Todo.queries";
 import { useId } from "react";
+import { TodoDeleteMutation as TTodoDeleteMutation } from "../graphql/__generated__/TodoDeleteMutation.graphql";
 
-export const useTodo = (id: string) => {
+export const useTodo = (id: string, __id: string) => {
   const { node: todo } = useLazyLoadQuery<TTodoQuery>(TodoQuery, { id });
-  const [mutate] = useMutation<TTodoUpdateMutation>(TodoUpdateMutation);
+  const [updateTodo] = useMutation<TTodoUpdateMutation>(TodoUpdateMutation);
+  const [deleteTodo] = useMutation<TTodoDeleteMutation>(TodoDeleteMutation);
   const clientMutationId = useId();
 
   return {
     todo,
     onUpdate: () =>
-      mutate({
+      updateTodo({
         variables: {
           input: {
             id: todo?.id!,
@@ -33,5 +38,22 @@ export const useTodo = (id: string) => {
           },
         },
       }),
+    onDelete: () => {
+      deleteTodo({
+        variables: {
+          connections: [__id!],
+          input: {
+            id,
+            clientMutationId,
+          },
+        },
+        optimisticResponse: {
+          deleteTodo: {
+            id,
+            clientMutationId,
+          },
+        },
+      });
+    },
   };
 };

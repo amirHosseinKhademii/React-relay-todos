@@ -29,7 +29,7 @@ export const Todos = () => {
               />
             }
           >
-            <Todo id={todo.node?.id!} />
+            <Todo id={todo.node?.id!} __id={data.todos.__id} />
           </Suspense>
         ))}
         {data.todos.pageInfo?.hasNextPage && (
