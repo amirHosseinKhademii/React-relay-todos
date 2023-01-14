@@ -16,7 +16,7 @@ export const Cards = ({ todo, todoId }: TCards) => {
     <>
       <div>
         <ICPlusCard
-          className=" mb-2 p-2 w-12 text-gray-600 ml-auto cursor-pointer "
+          className=" mb-2 p-2 w-11 text-gray-600 ml-auto cursor-pointer "
           onClick={onOpen}
         >
           Create Card

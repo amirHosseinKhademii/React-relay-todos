@@ -14,20 +14,20 @@ export const Todo = ({ id, __id }: { id: string; __id: string }) => {
     >
       <div className="flex items-center justify-between">
         <span className="text-xl "> {todo?.title}</span>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 mr-3">
           {todo?.isCompleted ? (
             <ICUnDone
-              className="text-cyan-800 w-5 cursor-pointer"
+              className="text-cyan-800 w-6 cursor-pointer"
               onClick={onUpdate}
             />
           ) : (
             <ICDone
-              className="text-gray-300 w-5 cursor-pointer"
+              className="text-gray-300 w-6 cursor-pointer"
               onClick={onUpdate}
             />
           )}
           <ICTrash
-            className="text-red-600 w-5 cursor-pointer"
+            className="text-red-600 w-6 cursor-pointer"
             onClick={onDelete}
           />
         </div>
