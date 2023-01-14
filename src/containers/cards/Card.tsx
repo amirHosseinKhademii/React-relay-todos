@@ -23,6 +23,12 @@ export const Card = ({ card, __id }: TCard) => {
         <span> {card.node?.title}</span>
 
         <div className="flex items-center space-x-2">
+          {!isComments && (
+            <ICComments
+              className=" text-green-300 w-5 mx-auto "
+              onClick={onCommentsToggle}
+            />
+          )}
           {card.node?.isCompleted ? (
             <ICUnDone
               className="text-cyan-800 w-5"
@@ -39,15 +45,10 @@ export const Card = ({ card, __id }: TCard) => {
           </ICTrash>
         </div>
       </div>
-      {isComments ? (
+      {isComments && (
         <Suspense fallback={<div>Loading comments...</div>}>
           <Comments cardId={card.node?.id!} />
         </Suspense>
-      ) : (
-        <ICComments
-          className=" text-green-300 w-5 mx-auto mt-2"
-          onClick={onCommentsToggle}
-        />
       )}
     </li>
   );
