@@ -3,36 +3,26 @@ import { ICLoadMore } from "icons/ICLoadMore";
 import { ICPlusTodo } from "icons/ICPlusTodo";
 import { Suspense } from "react";
 import { useTodos } from "./hooks";
-import { Todo } from "./Todo";
+// import { Todo } from "./Todo";
 export const Todos = () => {
-  const { data, onLoadMore, isPending, onClose, onOpen, onSubmit, isOpen } =
-    useTodos();
+  const { data, onLoadMore, isPending } = useTodos();
 
   return (
     <>
       <div
-        className="   rounded p-4 shadow-md flex flex-col space-y-2 bg-slate-600 antialiased  max-w-lg mx-auto "
+        className="rounded p-4 shadow-md flex flex-col space-y-2 bg-slate-600 antialiased  max-w-lg mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <ICPlusTodo
+        {/* <ICPlusTodo
           className=" text-gray-800 w-8 ml-auto cursor-pointer "
           onClick={onOpen}
         >
           Create Todo
-        </ICPlusTodo>
-        {data.todos.edges?.map((todo) => (
-          <Suspense
-            key={todo.node?.id}
-            fallback={
-              <div
-                className={`mx-auto w-full border-green-500 bg-green-200 rounded border  p-4 shadow-lg `}
-              />
-            }
-          >
-            <Todo id={todo.node?.id!} __id={data.todos.__id} />
-          </Suspense>
+        </ICPlusTodo> */}
+        {data?.todos?.edges?.map((todo) => (
+          <div key={todo.node.id}>{todo.node?.title}</div>
         ))}
-        {data.todos.pageInfo?.hasNextPage && (
+        {data?.todos?.pageInfo?.hasNextPage && (
           <ICLoadMore
             className="ml-auto w-10 text-gray-400 cursor-pointer"
             onClick={onLoadMore}
@@ -41,7 +31,7 @@ export const Todos = () => {
         )}
         {isPending && "Loading more ..."}
       </div>
-      {isOpen && (
+      {/* {isOpen && (
         <Modal {...{ onClose }}>
           <form
             className="w-full flex flex-col space-y-8 mt-4"
@@ -67,7 +57,7 @@ export const Todos = () => {
             </button>
           </form>
         </Modal>
-      )}
+      )} */}
     </>
   );
 };

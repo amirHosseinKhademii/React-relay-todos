@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<198681f667c64954e6ad7126c329d62a>>
+ * @generated SignedSource<<3120ee69c9d68cd4b2b681d34475ad2d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,13 +15,16 @@ export type TodosFragment$data = {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
+        readonly body: string | null;
         readonly id: string;
-      } | null;
+        readonly isCompleted: boolean;
+        readonly title: string;
+      };
     }> | null;
     readonly pageInfo: {
       readonly hasNextPage: boolean;
-    } | null;
-  };
+    };
+  } | null;
   readonly " $fragmentType": "TodosFragment";
 };
 export type TodosFragment$key = {
@@ -85,7 +88,7 @@ return {
     {
       "alias": "todos",
       "args": null,
-      "concreteType": "TodoConnection",
+      "concreteType": "TodosConnection",
       "kind": "LinkedField",
       "name": "__List__todos_connection",
       "plural": false,
@@ -93,7 +96,7 @@ return {
         {
           "alias": null,
           "args": null,
-          "concreteType": "TodoPageInfo",
+          "concreteType": "PageInfo",
           "kind": "LinkedField",
           "name": "pageInfo",
           "plural": false,
@@ -132,7 +135,7 @@ return {
         {
           "alias": null,
           "args": null,
-          "concreteType": "TodoEdge",
+          "concreteType": "TodosEdge",
           "kind": "LinkedField",
           "name": "edges",
           "plural": true,
@@ -149,7 +152,28 @@ return {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
+                  "name": "title",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "body",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
                   "name": "id",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "isCompleted",
                   "storageKey": null
                 },
                 {
@@ -193,6 +217,6 @@ return {
 };
 })();
 
-(node as any).hash = "715e14868cf1ac9ef118b53d49071113";
+(node as any).hash = "7996cc96a289890587bfd7d24fa96822";
 
 export default node;

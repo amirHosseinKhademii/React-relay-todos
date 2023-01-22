@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ac06c7b1395b42adda63925f3d3ad887>>
+ * @generated SignedSource<<ab732b85c1a25497188ec8a22369dccd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -102,7 +102,7 @@ return {
       {
         "alias": null,
         "args": (v4/*: any*/),
-        "concreteType": "TodoConnection",
+        "concreteType": "TodosConnection",
         "kind": "LinkedField",
         "name": "todos",
         "plural": false,
@@ -110,7 +110,7 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "TodoPageInfo",
+            "concreteType": "PageInfo",
             "kind": "LinkedField",
             "name": "pageInfo",
             "plural": false,
@@ -149,7 +149,7 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "TodoEdge",
+            "concreteType": "TodosEdge",
             "kind": "LinkedField",
             "name": "edges",
             "plural": true,
@@ -166,7 +166,28 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
+                    "name": "title",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "body",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "isCompleted",
                     "storageKey": null
                   },
                   {
@@ -216,16 +237,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "049c80875788be4f71f11c2c80262113",
+    "cacheID": "a389a7ff4f226d3733275fe0d53bf9a6",
     "id": null,
     "metadata": {},
     "name": "TodosQuery",
     "operationKind": "query",
-    "text": "query TodosQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...TodosFragment\n}\n\nfragment TodosFragment on Query {\n  todos(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query TodosQuery(\n  $before: String\n  $after: String\n  $first: Int\n  $last: Int\n) {\n  ...TodosFragment\n}\n\nfragment TodosFragment on Query {\n  todos(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        title\n        body\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "5848a8e2c2771800f67e44755e77ed72";
+(node as any).hash = "07922c4759c5326406ee1baa89d9c3a5";
 
 export default node;

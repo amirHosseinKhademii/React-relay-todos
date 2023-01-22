@@ -1,256 +1,226 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
+"""
+The `@defer` directive may be provided for fragment spreads and inline fragments to inform the executor to delay the execution of the current fragment to indicate deprioritization of the current fragment. A query with `@defer` directive will cause the request to potentially return multiple responses, where non-deferred data is delivered in the initial response and data deferred is delivered in a subsequent response. `@include` and `@skip` take precedence over `@defer`.
+"""
+directive @defer(
+  """
+  If this argument label has a value other than null, it will be passed on to the result of this defer directive. This label is intended to give client applications a way to identify to which fragment a deferred result belongs to.
+  """
+  label: String
 
+  """
+  Deferred when true.
+  """
+  if: Boolean
+) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""
+The `@stream` directive may be provided for a field of `List` type so that the backend can leverage technology such as asynchronous iterators to provide a partial list in the initial response, and additional list items in subsequent responses. `@include` and `@skip` take precedence over `@stream`.
+"""
+directive @stream(
+  """
+  If this argument label has a value other than null, it will be passed on to the result of this stream directive. This label is intended to give client applications a way to identify to which fragment a streamed result belongs to.
+  """
+  label: String
+
+  """
+  The initial elements that shall be send down to the consumer.
+  """
+  initialCount: Int! = 0
+
+  """
+  Streamed when true.
+  """
+  if: Boolean
+) on FIELD
+
+directive @authorize(
+  """
+  The name of the authorization policy that determines access to the annotated resource.
+  """
+  policy: String
+
+  """
+  Roles that are allowed to access the annotated resource.
+  """
+  roles: [String!]
+
+  """
+  Defines when when the resolver shall be executed.By default the resolver is executed after the policy has determined that the current user is allowed to access the field.
+  """
+  apply: ApplyPolicy! = BEFORE_RESOLVER
+) repeatable on SCHEMA | OBJECT | FIELD_DEFINITION
+
+"""
+The node interface is implemented by entities that have a global unique identifier.
+"""
 interface Node {
   id: ID!
 }
 
-type Comment implements Node {
-  id: ID!
-  title: String!
-  description: String
-  cardId: ID!
-  created_at: DateTime
-  updated_at: DateTime
+enum ApplyPolicy {
+  BEFORE_RESOLVER
+  AFTER_RESOLVER
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
+type Query {
+  """
+  Fetches an object given its ID.
+  """
+  node(
+    """
+    ID of the object.
+    """
+    id: ID!
+  ): Node
 
-type CommentConnection {
-  edges: [CommentEdge!]
-  pageInfo: CommentPageInfo
-}
+  """
+  Lookup nodes by a list of IDs.
+  """
+  nodes(
+    """
+    The list of node IDs.
+    """
+    ids: [ID!]!
+  ): [Node]!
+  book(id: String!): Book
+  books: [Book!]!
+  todos(
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
 
-type CommentEdge {
-  cursor: String
-  node: Comment
-}
-
-type CommentPageInfo {
-  startCursor: String
-  endCursor: String
-  hasPreviousPage: Boolean!
-  hasNextPage: Boolean!
-}
-
-type User implements Node {
-  id: ID!
-  userName: String!
-  fullName: String!
-  created_at: DateTime
-  updated_at: DateTime
-}
-
-type AddCommentPayload {
-  addCommentEdge: CommentResponseEdge!
-  clientMutationId: String
-}
-
-type CommentResponseEdge {
-  cursor: String
-  node: Comment
-}
-
-type Card implements Node {
-  id: ID!
-  title: String!
-  description: String
-  isCompleted: Boolean
-  comments(
-    before: String
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
     after: String
-    first: Float
-    last: Float
-    query: String
-  ): CommentConnection!
-  created_at: DateTime
-  updated_at: DateTime
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+  ): TodosConnection
+  users: [User!]!
+  user: User!
 }
 
-type CardConnection {
-  edges: [CardEdge!]
-  pageInfo: CardPageInfo
+type Mutation {
+  createBook(title: String!): Book!
+  deleteBook(id: String!): String!
+  updateBook(book: BookInput!): Book!
+  updateAuthor(id: String!, author: String!): String!
+  createTodo(title: String!, body: String): Todo!
+  removeTodo(id: String!): String!
+  completeTodo(id: String!, isCompleted: Boolean!): Todo!
+  updateTodo(id: String!, title: String!, body: String!): Todo!
+  createUser(email: String!, password: String!): User!
+  signInUser(email: String!, password: String!): String!
 }
 
-type CardEdge {
-  cursor: String
-  node: Card
+type Subscription {
+  todoAdded: Todo!
 }
 
-type CardPageInfo {
-  startCursor: String
-  endCursor: String
-  hasPreviousPage: Boolean!
+"""
+A connection to a list of items.
+"""
+type TodosConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+
+  """
+  A list of edges.
+  """
+  edges: [TodosEdge!]
+
+  """
+  A flattened list of the nodes.
+  """
+  nodes: [Todo!]
+}
+
+"""
+Information about pagination in a connection.
+"""
+type PageInfo {
+  """
+  Indicates whether more edges exist following the set defined by the clients arguments.
+  """
   hasNextPage: Boolean!
-}
 
-type AddCardPayload {
-  addCardEdge: CardResponseEdge!
-  clientMutationId: String
-}
+  """
+  Indicates whether more edges exist prior the set defined by the clients arguments.
+  """
+  hasPreviousPage: Boolean!
 
-type CardResponseEdge {
-  cursor: String
-  node: Card
-}
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
 
-type UpdateCardPayload {
-  card: Card!
-  clientMutationId: String
-}
-
-type DeleteCardPayload {
-  id: ID!
-  clientMutationId: String
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
 }
 
 type Todo implements Node {
   id: ID!
   title: String!
-  description: String
-  isCompleted: Boolean
-  created_at: DateTime
-  updated_at: DateTime
-  cards(
-    before: String
-    after: String
-    first: Float
-    last: Float
-    query: String
-  ): CardConnection!
-  user: User!
+  body: String
+  isCompleted: Boolean!
+  createdDate: DateTime!
 }
 
-type TodoConnection {
-  edges: [TodoEdge!]
-  pageInfo: TodoPageInfo
+"""
+An edge in a connection.
+"""
+type TodosEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Todo!
 }
 
-type TodoEdge {
-  cursor: String
-  node: Todo
-}
-
-type TodoPageInfo {
-  startCursor: String
-  endCursor: String
-  hasPreviousPage: Boolean!
-  hasNextPage: Boolean!
-}
-
-type AddTodoPayload {
-  addTodoEdge: TodoResponseEdge!
-  clientMutationId: String
-}
-
-type TodoResponseEdge {
-  cursor: String
-  node: Todo
-}
-
-type UpdateTodoPayload {
-  todo: Todo!
-  clientMutationId: String
-}
-
-type DeleteTodoPayload {
-  id: ID!
-  clientMutationId: String
-}
-
-type Query {
-  node(id: ID!): Node
-  users: [User!]!
-  user(userId: String!): User!
-  todos(
-    before: String
-    after: String
-    first: Float
-    last: Float
-    query: String
-  ): TodoConnection!
-  todo(id: ID!): Todo!
-  cards(
-    before: String
-    after: String
-    first: Float
-    last: Float
-    query: String
-  ): CardConnection!
-  comments(
-    before: String
-    after: String
-    first: Float
-    last: Float
-    cardId: ID!
-    query: String
-  ): CommentConnection!
-}
-
-type Mutation {
-  signUp(userName: String!, fullName: String!, password: String!): String!
-  signIn(userName: String!, password: String!): String!
-  addTodo(input: AddTodoInput!): AddTodoPayload
-  updateTodo(input: UpdateTodoInput!): UpdateTodoPayload
-  deleteTodo(input: DeleteTodoInput!): DeleteTodoPayload
-  addCard(input: AddCardInput!): AddCardPayload
-  updateCard(input: UpdateCardInput!): UpdateCardPayload
-  deleteCard(input: DeleteCardInput!): DeleteCardPayload
-  addComment(input: AddCommentInput!): AddCommentPayload
-}
-
-input AddTodoInput {
+input BookInput {
+  id: String
   title: String!
-  description: String = ""
-  clientMutationId: String
+  author: AuthorInput
 }
 
-input UpdateTodoInput {
-  id: ID!
-  title: String
-  description: String
-  isCompleted: Boolean
-  clientMutationId: String
+type User {
+  id: String
+  email: String!
+  password: String!
 }
 
-input DeleteTodoInput {
-  id: ID!
-  clientMutationId: String
-}
-
-input AddCardInput {
-  todoId: ID!
+type Book {
+  id: String
   title: String!
-  description: String = ""
-  clientMutationId: String
+  author: Author
 }
 
-input UpdateCardInput {
-  id: ID!
-  title: String
-  description: String
-  isCompleted: Boolean
-  clientMutationId: String
+"""
+The `DateTime` scalar represents an ISO-8601 compliant date time type.
+"""
+scalar DateTime
+
+type Author {
+  name: String!
 }
 
-input DeleteCardInput {
-  id: ID!
-  clientMutationId: String
-}
-
-input AddCommentInput {
-  cardId: ID!
-  title: String!
-  description: String = ""
-  clientMutationId: String
-}
-
-type Subscription {
-  todoUpdated: Todo!
-  cardAdded: Card!
-  cardUpdated: Card!
+input AuthorInput {
+  name: String!
 }

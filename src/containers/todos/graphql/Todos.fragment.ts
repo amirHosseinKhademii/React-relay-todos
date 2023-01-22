@@ -11,18 +11,21 @@ export const TodosFragment = graphql`
       }
       edges {
         node {
+          title
+          body
           id
+          isCompleted
         }
       }
     }
   }
 `;
 
-export const TodosBaseFragment = graphql`
-  fragment TodosBaseFragment on Todo {
-    title
-    description
-    id
-    isCompleted
-  }
-`;
+// export const TodosBaseFragment = graphql`
+//   fragment TodosBaseFragment on Todo {
+//     title
+//     description
+//     id
+//     isCompleted
+//   }
+// `;
