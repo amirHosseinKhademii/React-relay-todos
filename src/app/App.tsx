@@ -6,10 +6,12 @@ import "./index.css";
 
 export function App() {
   return (
-    <RelayEnvironmentProvider environment={environment}>
-      <Suspense fallback="Loading Todos ...">
-        <Todos />
-      </Suspense>
-    </RelayEnvironmentProvider>
+    <div className="bg-slate-900 antialiased h-screen p-8">
+      <RelayEnvironmentProvider environment={environment}>
+        <Suspense fallback="Loading Todos ...">
+          <Todos />
+        </Suspense>
+      </RelayEnvironmentProvider>
+    </div>
   );
 }

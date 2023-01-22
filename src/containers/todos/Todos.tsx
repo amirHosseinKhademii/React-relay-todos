@@ -11,7 +11,7 @@ export const Todos = () => {
   return (
     <>
       <div
-        className="m-8 border  rounded p-4 shadow-md flex flex-col space-y-2 border-gray-300 bg-gray-100 "
+        className="   rounded p-4 shadow-md flex flex-col space-y-2 bg-slate-600 antialiased  max-w-lg mx-auto "
         onClick={(e) => e.stopPropagation()}
       >
         <ICPlusTodo
