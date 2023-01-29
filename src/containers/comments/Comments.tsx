@@ -1,11 +1,11 @@
-import { Modal } from "components";
 import { ICLoadMore } from "icons/ICLoadMore";
 import { ICPlus } from "icons/ICPlus";
 import { Comment } from "./Comment";
+import { CommentModal } from "./CommentModal";
 import { useComments } from "./hooks";
 
 export const Comments = ({ cardId }: { cardId: string }) => {
-  const { data, onLoadMore, isPending, onOpen, isOpen, onClose, onSubmit } =
+  const { data, onLoadMore, isPending, onOpen, isOpen, onClose } =
     useComments(cardId);
 
   return (
@@ -34,31 +34,7 @@ export const Comments = ({ cardId }: { cardId: string }) => {
         {isPending && "Loading more ..."}
       </div>
       {isOpen && (
-        <Modal {...{ onClose }}>
-          <form
-            className="w-full flex flex-col space-y-8 mt-4"
-            {...{ onSubmit }}
-          >
-            <input
-              type="text"
-              placeholder="Title"
-              name="title"
-              className="w-full h-14 rounded border border-gray-300 px-4"
-            />
-            <input
-              name="description"
-              type="text"
-              placeholder="Description"
-              className="w-full h-14 rounded border border-gray-300 px-4"
-            />
-            <button
-              type="submit"
-              className=" mb-4 p-4 rounded bg-gray-600 text-white text-center w-full"
-            >
-              Save Comment
-            </button>
-          </form>
-        </Modal>
+        <CommentModal {...{ cardId, onClose }} __id={data.comments.__id} />
       )}
     </>
   );

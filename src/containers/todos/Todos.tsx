@@ -1,12 +1,12 @@
-import { Modal } from "components";
 import { ICLoadMore } from "icons/ICLoadMore";
 import { ICPlus } from "icons/ICPlus";
 import { Suspense } from "react";
 import { useTodos } from "./hooks";
 import { Todo } from "./Todo";
+import { TodosModal } from "./TodosModal";
+
 export const Todos = () => {
-  const { data, onLoadMore, isPending, onClose, onOpen, onSubmit, isOpen } =
-    useTodos();
+  const { data, onLoadMore, isPending, onClose, onOpen, isOpen } = useTodos();
 
   return (
     <>
@@ -28,45 +28,22 @@ export const Todos = () => {
               />
             }
           >
-            <Todo id={todo.node?.id!} __id={data.todos.__id} />
+            <Todo
+              key={todo.node?.id}
+              id={todo.node?.id!}
+              __id={data.todos.__id}
+            />
           </Suspense>
         ))}
         {data.todos.pageInfo?.hasNextPage && (
           <ICLoadMore
             className="ml-auto w-10 text-gray-400 cursor-pointer"
             onClick={onLoadMore}
-            //disabled={isPending}
           />
         )}
         {isPending && "Loading more ..."}
       </div>
-      {isOpen && (
-        <Modal {...{ onClose }}>
-          <form
-            className="w-full flex flex-col space-y-8 mt-4"
-            {...{ onSubmit }}
-          >
-            <input
-              type="text"
-              placeholder="Title"
-              name="title"
-              className="w-full h-14 rounded border border-gray-300 px-4"
-            />
-            <input
-              name="description"
-              type="text"
-              placeholder="Description"
-              className="w-full h-14 rounded border border-gray-300 px-4"
-            />
-            <button
-              type="submit"
-              className=" mb-4 p-4 rounded bg-gray-800 text-white text-center w-full"
-            >
-              Save Todo
-            </button>
-          </form>
-        </Modal>
-      )}
+      {isOpen && <TodosModal {...{ onClose }} />}
     </>
   );
 };
