@@ -16,17 +16,13 @@ export type TComment = {
   };
 };
 
-export const useComment = ({ __id, comment }: TComment) => {
-  //   const [isComments, setIsComments] = useState(false);
+export const useComment = ({ __id }: TComment) => {
   const [deleteComment] = useMutation<TCommentDeleteMutation>(
     CommentDeleteMutation
   );
-  //   const [updateCard] = useMutation<TCardUpdateMutation>(CardUpdateMutation);
   const clientMutationId = useId();
 
   return {
-    //isComments,
-    // onCommentsToggle: () => setIsComments((prev) => !prev),
     onDelete: (id: string) => {
       deleteComment({
         variables: {
@@ -44,26 +40,5 @@ export const useComment = ({ __id, comment }: TComment) => {
         },
       });
     },
-    // onCompleteToggle: () =>
-    //   updateCard({
-    //     variables: {
-    //       input: {
-    //         id: card.node?.id!,
-    //         isCompleted: !card.node?.isCompleted,
-    //         clientMutationId: clientMutationId,
-    //       },
-    //     },
-    //     optimisticResponse: {
-    //       updateCard: {
-    //         card: {
-    //           id: card.node?.id!,
-    //           isCompleted: !card.node?.isCompleted,
-    //           description: card.node?.description,
-    //           title: card.node?.title,
-    //         },
-    //         clientMutationId: clientMutationId,
-    //       },
-    //     },
-    //   }),
   };
 };

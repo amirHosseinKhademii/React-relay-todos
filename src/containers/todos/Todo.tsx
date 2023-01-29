@@ -9,12 +9,12 @@ export const Todo = ({ id, __id }: { id: string; __id: string }) => {
   return (
     <div
       className={`mx-auto w-full rounded border border-green-500    p-4 shadow-lg ${
-        todo?.isCompleted ? "bg-green-400" : "bg-cyan-50"
+        todo?.isCompleted ? "bg-green-100" : "bg-cyan-50"
       }`}
     >
       <div className="flex items-center justify-between">
         <span className="text-xl "> {todo?.title}</span>
-        <div className="flex items-center space-x-2 mr-3">
+        <div className="flex items-center space-x-2 ">
           {todo?.isCompleted ? (
             <ICUnDone
               className="text-cyan-800 w-6 cursor-pointer"

@@ -1,6 +1,6 @@
 import { Modal } from "components";
 import { ICLoadMore } from "icons/ICLoadMore";
-import { ICPlusCard } from "icons/ICPlusCard";
+import { ICPlus } from "icons/ICPlus";
 import { Suspense } from "react";
 import { Card } from "./Card";
 import { TCards, useCards } from "./hooks";
@@ -15,12 +15,11 @@ export const Cards = ({ todo, todoId }: TCards) => {
   return (
     <>
       <div>
-        <ICPlusCard
+        <ICPlus
           className=" mb-2 p-2 w-11 text-gray-600 ml-auto cursor-pointer "
           onClick={onOpen}
-        >
-          Create Card
-        </ICPlusCard>
+        />
+
         <ul
           className="rounded p-2  flex flex-col space-y-2 "
           onClick={(e) => e.stopPropagation()}

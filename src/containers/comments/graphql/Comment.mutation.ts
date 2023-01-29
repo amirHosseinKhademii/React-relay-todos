@@ -1,18 +1,19 @@
 import { graphql } from "react-relay";
 
-// export const CardAddMutation = graphql`
-//   mutation CardAddMutation($input: AddCardInput!, $connections: [ID!]!) {
-//     addCard(input: $input) {
-//       clientMutationId
-//       addCardEdge {
-//         cursor
-//         node @appendNode(connections: $connections, edgeTypeName: "CardEdge") {
-//           ...CardsBaseFragment
-//         }
-//       }
-//     }
-//   }
-// `;
+export const CommentAddMutation = graphql`
+  mutation CommentAddMutation($input: AddCommentInput!, $connections: [ID!]!) {
+    addComment(input: $input) {
+      clientMutationId
+      addCommentEdge {
+        cursor
+        node
+          @appendNode(connections: $connections, edgeTypeName: "CommentEdge") {
+          ...CommentBaseFragment
+        }
+      }
+    }
+  }
+`;
 
 export const CommentDeleteMutation = graphql`
   mutation CommentDeleteMutation(
@@ -25,14 +26,3 @@ export const CommentDeleteMutation = graphql`
     }
   }
 `;
-
-// export const CardUpdateMutation = graphql`
-//   mutation CardUpdateMutation($input: UpdateCardInput!) {
-//     updateCard(input: $input) {
-//       clientMutationId
-//       card {
-//         ...CardsBaseFragment
-//       }
-//     }
-//   }
-// `;

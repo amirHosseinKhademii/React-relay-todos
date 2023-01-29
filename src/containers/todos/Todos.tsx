@@ -1,6 +1,6 @@
 import { Modal } from "components";
 import { ICLoadMore } from "icons/ICLoadMore";
-import { ICPlusTodo } from "icons/ICPlusTodo";
+import { ICPlus } from "icons/ICPlus";
 import { Suspense } from "react";
 import { useTodos } from "./hooks";
 import { Todo } from "./Todo";
@@ -14,12 +14,11 @@ export const Todos = () => {
         className="   rounded p-4 shadow-md flex flex-col space-y-2 bg-slate-600 antialiased  max-w-lg mx-auto "
         onClick={(e) => e.stopPropagation()}
       >
-        <ICPlusTodo
-          className=" text-gray-800 w-8 ml-auto cursor-pointer "
+        <ICPlus
+          className=" text-gray-800 w-9 ml-auto cursor-pointer "
           onClick={onOpen}
-        >
-          Create Todo
-        </ICPlusTodo>
+        />
+
         {data.todos.edges?.map((todo) => (
           <Suspense
             key={todo.node?.id}
