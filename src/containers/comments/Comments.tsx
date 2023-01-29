@@ -1,4 +1,5 @@
 import { ICLoadMore } from "icons/ICLoadMore";
+import { Comment } from "./Comment";
 import { useComments } from "./hooks";
 
 export const Comments = ({ cardId }: { cardId: string }) => {
@@ -8,12 +9,11 @@ export const Comments = ({ cardId }: { cardId: string }) => {
     <div className="  w-full">
       <div className="flex flex-col space-y-2 my-2">
         {data?.comments?.edges?.map((comment) => (
-          <div
+          <Comment
+            {...{ comment }}
             key={comment.node?.id}
-            className="text-xs text-gray-600 p-2 w-full rounded border bg-cyan-300"
-          >
-            {comment.node?.title}
-          </div>
+            __id={data.comments.__id}
+          />
         ))}
       </div>
 

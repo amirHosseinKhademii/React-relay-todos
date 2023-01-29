@@ -55,6 +55,11 @@ type CommentResponseEdge {
   node: Comment
 }
 
+type DeleteCommentPayload {
+  id: ID!
+  clientMutationId: String
+}
+
 type Card implements Node {
   id: ID!
   title: String!
@@ -201,6 +206,7 @@ type Mutation {
   updateCard(input: UpdateCardInput!): UpdateCardPayload
   deleteCard(input: DeleteCardInput!): DeleteCardPayload
   addComment(input: AddCommentInput!): AddCommentPayload
+  deleteComment(input: DeleteCommentInput!): DeleteCommentPayload
 }
 
 input AddTodoInput {
@@ -246,6 +252,11 @@ input AddCommentInput {
   cardId: ID!
   title: String!
   description: String = ""
+  clientMutationId: String
+}
+
+input DeleteCommentInput {
+  id: ID!
   clientMutationId: String
 }
 
