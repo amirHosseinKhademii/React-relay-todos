@@ -5,6 +5,8 @@ export const UsersBaseFragment = graphql`
     id
     userName
     fullName
+    followers
+    followings
   }
 `;
 
