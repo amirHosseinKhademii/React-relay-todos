@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { useMutation } from "react-relay";
 import { CommentDeleteMutation as TCommentDeleteMutation } from "containers/comments/graphql/__generated__/CommentDeleteMutation.graphql";
 import {
@@ -30,7 +30,16 @@ export const useComment = ({ __id }: TComment) => {
 
   const clientMutationId = useId();
 
+  const [isUsers, setIsUsersOpen] = useState(false);
+
+  const onUsersToggle = (e: any) => {
+    e.stopPropagation();
+    setIsUsersOpen((prev) => !prev);
+  };
+
   return {
+    isUsers,
+    onUsersToggle,
     onDelete: (id: string) => {
       deleteComment({
         variables: {

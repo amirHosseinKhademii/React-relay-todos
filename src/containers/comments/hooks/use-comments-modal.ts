@@ -41,6 +41,7 @@ export const useCommentsModal = ({
                 id: clientMutationId,
                 title,
                 description,
+                likes: [],
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString(),
               },
