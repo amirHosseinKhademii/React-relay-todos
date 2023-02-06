@@ -1,29 +1,32 @@
-import { useLazyLoadQuery } from "react-relay";
-
+import { useLazyLoadQuery, usePaginationFragment } from "react-relay";
 import { UsersByIdsQuery } from "containers/users/graphql/Users.queries";
 import { UsersByIdsQuery as TUsersByIdsQuery } from "containers/users/graphql/__generated__/UsersByIdsQuery.graphql";
+import { UsersPaginationFrgament } from "containers/users/graphql/__generated__/UsersPaginationFrgament.graphql";
+import { UsersFragment } from "containers/users/graphql/Users.fragment";
+import { UsersFragment$key } from "containers/users/graphql/__generated__/UsersFragment.graphql";
+import { useTransition } from "react";
 
 export type TUseUsers = { ids: string[] };
 
 export const useUsers = ({ ids }: TUseUsers) => {
-  // const [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
-  const data = useLazyLoadQuery<TUsersByIdsQuery>(UsersByIdsQuery, { ids });
+  const users = useLazyLoadQuery<TUsersByIdsQuery>(UsersByIdsQuery, {
+    ids,
+    first: 2,
+  });
 
-  // const { data, loadNext } = usePaginationFragment<
-  //   TodosPaginationFrgament,
-  //   TodosFragment$key
-  // >(TodosFragment, todos);
+  const { data, loadNext } = usePaginationFragment<
+    UsersPaginationFrgament,
+    UsersFragment$key
+  >(UsersFragment, users);
 
   return {
-    users: data.usersByIds,
-    //   isPending,
-    //   isOpen,
-    //   onOpen,
-    //   onClose,
-    //   onLoadMore: () =>
-    //     startTransition(() => {
-    //       loadNext(2);
-    //     }),
+    isPending,
+    data,
+    onLoadMore: () =>
+      startTransition(() => {
+        loadNext(2);
+      }),
   };
 };
