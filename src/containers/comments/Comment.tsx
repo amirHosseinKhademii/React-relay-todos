@@ -1,4 +1,4 @@
-import { Users } from "containers/users/Users";
+import { UsersLiked } from "containers/users/UsersLiked";
 import { ICHeartOutline } from "icons/ICHeartOutline";
 import { ICTrash } from "icons/ICTrash";
 import { Suspense } from "react";
@@ -43,7 +43,7 @@ export const Comment = ({ comment, __id }: TComment) => {
 
       {isUsers && comment?.node?.likes.length !== 0 && (
         <Suspense fallback={<div>users Loading...</div>}>
-          <Users ids={comment.node?.likes!} />
+          <UsersLiked ids={comment.node?.likes!} />
         </Suspense>
       )}
     </div>
