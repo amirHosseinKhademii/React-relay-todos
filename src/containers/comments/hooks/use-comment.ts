@@ -16,7 +16,7 @@ export type TComment = {
       readonly id: string;
       readonly title: string;
       readonly updated_at: any;
-      readonly likes: string[];
+      readonly likes: readonly string[];
     } | null;
   };
 };

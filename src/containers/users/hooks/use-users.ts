@@ -6,7 +6,7 @@ import { UsersFragment } from "containers/users/graphql/Users.fragment";
 import { UsersFragment$key } from "containers/users/graphql/__generated__/UsersFragment.graphql";
 import { useTransition } from "react";
 
-export type TUseUsers = { ids: string[] };
+export type TUseUsers = { ids: readonly string[] };
 
 export const useUsers = ({ ids }: TUseUsers) => {
   const [isPending, startTransition] = useTransition();
