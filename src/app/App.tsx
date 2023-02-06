@@ -12,7 +12,9 @@ export function App() {
         <Suspense fallback="Loading Todos ...">
           <Todos />
         </Suspense>
-        <Users />
+        <Suspense fallback="Loading Users ...">
+          <Users />
+        </Suspense>
       </div>
     </RelayEnvironmentProvider>
   );

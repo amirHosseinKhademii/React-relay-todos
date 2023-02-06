@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8d0799fe35f4d55e32d9179ea1cbe2ed>>
+ * @generated SignedSource<<86cd251e5221151e95eb4ad6eb55ea58>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,44 +10,42 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type UsersPaginationFrgament$variables = {
+export type UsersQuery$variables = {
   after?: string | null;
   before?: string | null;
   first?: number | null;
   last?: number | null;
 };
-export type UsersPaginationFrgament$data = {
+export type UsersQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"UsersFragment">;
 };
-export type UsersPaginationFrgament = {
-  response: UsersPaginationFrgament$data;
-  variables: UsersPaginationFrgament$variables;
+export type UsersQuery = {
+  response: UsersQuery$data;
+  variables: UsersQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "after"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "before"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "first"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "last"
-  }
-],
-v1 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "after"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "before"
+},
+v2 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "first"
+},
+v3 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "last"
+},
+v4 = [
   {
     "kind": "Variable",
     "name": "after",
@@ -71,10 +69,15 @@ v1 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/),
+      (v2/*: any*/),
+      (v3/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "UsersPaginationFrgament",
+    "name": "UsersQuery",
     "selections": [
       {
         "args": null,
@@ -87,13 +90,18 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/),
+      (v2/*: any*/),
+      (v3/*: any*/)
+    ],
     "kind": "Operation",
-    "name": "UsersPaginationFrgament",
+    "name": "UsersQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v4/*: any*/),
         "concreteType": "UsersConnection",
         "kind": "LinkedField",
         "name": "users",
@@ -226,7 +234,7 @@ return {
       },
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v4/*: any*/),
         "filters": null,
         "handle": "connection",
         "key": "List__users",
@@ -236,16 +244,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "764fe46d51bf2748472131325f77d5ff",
+    "cacheID": "625e2000ce13e780efcceaac316b9369",
     "id": null,
     "metadata": {},
-    "name": "UsersPaginationFrgament",
+    "name": "UsersQuery",
     "operationKind": "query",
-    "text": "query UsersPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        followers\n        followings\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query UsersQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        followers\n        followings\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "94d7b82d296d9ad684c3af47aff3c65a";
+(node as any).hash = "b80965dd85e1f80d0f3b9e3205a06575";
 
 export default node;

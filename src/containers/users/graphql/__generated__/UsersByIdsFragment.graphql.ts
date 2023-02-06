@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0506b2d4eb3e5a79dc4c69f205916c5e>>
+ * @generated SignedSource<<3fc6c2146c40dbdbcfea66f4f193df77>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,11 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type UsersFragment$data = {
-  readonly users: {
+export type UsersByIdsFragment$data = {
+  readonly usersByIds: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly followers: ReadonlyArray<string>;
-        readonly followings: ReadonlyArray<string>;
         readonly fullName: string;
         readonly id: string;
         readonly userName: string;
@@ -26,18 +24,18 @@ export type UsersFragment$data = {
       readonly hasNextPage: boolean;
     } | null;
   };
-  readonly " $fragmentType": "UsersFragment";
+  readonly " $fragmentType": "UsersByIdsFragment";
 };
-export type UsersFragment$key = {
-  readonly " $data"?: UsersFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"UsersFragment">;
+export type UsersByIdsFragment$key = {
+  readonly " $data"?: UsersByIdsFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"UsersByIdsFragment">;
 };
 
-import UsersPaginationFrgament_graphql from './UsersPaginationFrgament.graphql';
+import UsersByIdsPaginationFrgament_graphql from './UsersByIdsPaginationFrgament.graphql';
 
 const node: ReaderFragment = (function(){
 var v0 = [
-  "users"
+  "usersByIds"
 ];
 return {
   "argumentDefinitions": [
@@ -52,6 +50,10 @@ return {
     {
       "kind": "RootArgument",
       "name": "first"
+    },
+    {
+      "kind": "RootArgument",
+      "name": "ids"
     },
     {
       "kind": "RootArgument",
@@ -81,17 +83,23 @@ return {
         "path": (v0/*: any*/)
       },
       "fragmentPathInResult": [],
-      "operation": UsersPaginationFrgament_graphql
+      "operation": UsersByIdsPaginationFrgament_graphql
     }
   },
-  "name": "UsersFragment",
+  "name": "UsersByIdsFragment",
   "selections": [
     {
-      "alias": "users",
-      "args": null,
+      "alias": "usersByIds",
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "ids",
+          "variableName": "ids"
+        }
+      ],
       "concreteType": "UsersConnection",
       "kind": "LinkedField",
-      "name": "__List__users_connection",
+      "name": "__List__usersByIds_connection",
       "plural": false,
       "selections": [
         {
@@ -174,20 +182,6 @@ return {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
-                  "name": "followers",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "followings",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
                   "name": "__typename",
                   "storageKey": null
                 }
@@ -225,6 +219,6 @@ return {
 };
 })();
 
-(node as any).hash = "94d7b82d296d9ad684c3af47aff3c65a";
+(node as any).hash = "1e5b195598dce5cb14fe4796de91890a";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8d0799fe35f4d55e32d9179ea1cbe2ed>>
+ * @generated SignedSource<<a7519ec5a3e0b6f7a32683118a848219>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,18 +10,19 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type UsersPaginationFrgament$variables = {
+export type UsersByIdsPaginationFrgament$variables = {
   after?: string | null;
   before?: string | null;
   first?: number | null;
+  ids: ReadonlyArray<string>;
   last?: number | null;
 };
-export type UsersPaginationFrgament$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"UsersFragment">;
+export type UsersByIdsPaginationFrgament$data = {
+  readonly " $fragmentSpreads": FragmentRefs<"UsersByIdsFragment">;
 };
-export type UsersPaginationFrgament = {
-  response: UsersPaginationFrgament$data;
-  variables: UsersPaginationFrgament$variables;
+export type UsersByIdsPaginationFrgament = {
+  response: UsersByIdsPaginationFrgament$data;
+  variables: UsersByIdsPaginationFrgament$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -40,6 +41,11 @@ var v0 = [
     "defaultValue": null,
     "kind": "LocalArgument",
     "name": "first"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "ids"
   },
   {
     "defaultValue": null,
@@ -65,6 +71,11 @@ v1 = [
   },
   {
     "kind": "Variable",
+    "name": "ids",
+    "variableName": "ids"
+  },
+  {
+    "kind": "Variable",
     "name": "last",
     "variableName": "last"
   }
@@ -74,12 +85,12 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "UsersPaginationFrgament",
+    "name": "UsersByIdsPaginationFrgament",
     "selections": [
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "UsersFragment"
+        "name": "UsersByIdsFragment"
       }
     ],
     "type": "Query",
@@ -89,14 +100,14 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "UsersPaginationFrgament",
+    "name": "UsersByIdsPaginationFrgament",
     "selections": [
       {
         "alias": null,
         "args": (v1/*: any*/),
         "concreteType": "UsersConnection",
         "kind": "LinkedField",
-        "name": "users",
+        "name": "usersByIds",
         "plural": false,
         "selections": [
           {
@@ -179,20 +190,6 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
-                    "name": "followers",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "followings",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
                     "name": "__typename",
                     "storageKey": null
                   }
@@ -227,25 +224,27 @@ return {
       {
         "alias": null,
         "args": (v1/*: any*/),
-        "filters": null,
+        "filters": [
+          "ids"
+        ],
         "handle": "connection",
-        "key": "List__users",
+        "key": "List__usersByIds",
         "kind": "LinkedHandle",
-        "name": "users"
+        "name": "usersByIds"
       }
     ]
   },
   "params": {
-    "cacheID": "764fe46d51bf2748472131325f77d5ff",
+    "cacheID": "e19462820c8ca83185faca4349a7d0b7",
     "id": null,
     "metadata": {},
-    "name": "UsersPaginationFrgament",
+    "name": "UsersByIdsPaginationFrgament",
     "operationKind": "query",
-    "text": "query UsersPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        followers\n        followings\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query UsersByIdsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $ids: [ID!]!\n  $last: Float\n) {\n  ...UsersByIdsFragment\n}\n\nfragment UsersByIdsFragment on Query {\n  usersByIds(before: $before, after: $after, first: $first, last: $last, ids: $ids) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "94d7b82d296d9ad684c3af47aff3c65a";
+(node as any).hash = "1e5b195598dce5cb14fe4796de91890a";
 
 export default node;

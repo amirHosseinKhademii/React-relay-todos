@@ -205,7 +205,13 @@ type DeleteTodoPayload {
 type Query {
   node(id: ID!): Node
   nodes(ids: ID!): [Node!]
-  users: [User!]!
+  users(
+    before: String
+    after: String
+    first: Float
+    last: Float
+    query: String
+  ): UsersConnection!
   usersByIds(
     before: String
     after: String

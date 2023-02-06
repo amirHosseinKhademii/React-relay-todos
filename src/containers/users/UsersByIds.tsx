@@ -1,7 +1,7 @@
-import { TUseUsers, useUsers } from "./hooks/use-users";
+import { TUseUsersByIds, useUsersByIds } from "./hooks/use-users-by-ids";
 
-export const UsersLiked = ({ ids }: TUseUsers) => {
-  const { data } = useUsers({ ids });
+export const UsersByIds = ({ ids }: TUseUsersByIds) => {
+  const { data } = useUsersByIds({ ids });
 
   return (
     <div className=" w-1/3 self-end  flex flex-col  bg-white rounded py-1 px-2 ">

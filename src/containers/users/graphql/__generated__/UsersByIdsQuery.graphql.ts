@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<39cdbf3de4b27ee3e27d3d7d2c752c6d>>
+ * @generated SignedSource<<07f87992228d504cb444d41fca344609>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,7 +18,7 @@ export type UsersByIdsQuery$variables = {
   last?: number | null;
 };
 export type UsersByIdsQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"UsersFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"UsersByIdsFragment">;
 };
 export type UsersByIdsQuery = {
   response: UsersByIdsQuery$data;
@@ -94,7 +94,7 @@ return {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "UsersFragment"
+        "name": "UsersByIdsFragment"
       }
     ],
     "type": "Query",
@@ -245,16 +245,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1f4d9b10a764073119f3a4b6a7cf5616",
+    "cacheID": "dc43f81001c4a2da4a77c576a3c235b6",
     "id": null,
     "metadata": {},
     "name": "UsersByIdsQuery",
     "operationKind": "query",
-    "text": "query UsersByIdsQuery(\n  $ids: [ID!]!\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UsersFragment on Query {\n  usersByIds(before: $before, after: $after, first: $first, last: $last, ids: $ids) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query UsersByIdsQuery(\n  $ids: [ID!]!\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersByIdsFragment\n}\n\nfragment UsersByIdsFragment on Query {\n  usersByIds(before: $before, after: $after, first: $first, last: $last, ids: $ids) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "af01b582a513a87ba23f5f2b68ceaea7";
+(node as any).hash = "a9764269cf62d42df11330f21859a02b";
 
 export default node;
