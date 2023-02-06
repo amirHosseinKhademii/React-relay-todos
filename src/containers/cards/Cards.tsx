@@ -1,50 +1,40 @@
-import { TodoMutation } from "containers/todo/graphql/Todo.mutations";
-import { TodoCardsFragment } from "containers/todo/graphql/Todo.queries";
-import { TodoCardsFragment$key } from "containers/todo/graphql/__generated__/TodoCardsFragment.graphql";
-import { useTransition } from "react";
-import { useMutation, usePaginationFragment } from "react-relay";
-export type GetElementType<T extends any[]> = T extends (infer U)[] ? U : never;
+import { ICLoadMore } from "icons/ICLoadMore";
+import { ICPlus } from "icons/ICPlus";
+import { Card } from "./Card";
+import { CardsModal } from "./CardsModal";
+import { TCards, useCards } from "./hooks";
 
-export const Cards = ({ todo }: { todo: TodoCardsFragment$key }) => {
-  const [isPending, startTransition] = useTransition();
-  const { data, loadNext } = usePaginationFragment(TodoCardsFragment, todo);
+export const Cards = ({ todo, todoId }: TCards) => {
+  const { data, isPending, onLoadMore, onClose, onOpen, isOpen } = useCards({
+    todo,
+    todoId,
+  });
 
-  const onLoadMore = () =>
-    startTransition(() => {
-      loadNext(2);
-    });
   return (
-    <ul className=" border border-cyan-500 bg-cyan-200 rounded p-4 shadow-md flex flex-col space-y-2 ">
-      {data.cards.edges?.map((card) => (
-        <Card key={card.node?.id} {...{ card }} />
-      ))}
-      {data.cards.pageInfo?.hasNextPage && (
-        <button
-          className="bg-green-200 border border-green-300 rounded p-2"
-          onClick={onLoadMore}
-          disabled={isPending}
+    <>
+      <div>
+        <ICPlus
+          className=" mb-2 p-2 w-11 text-gray-600 ml-auto cursor-pointer "
+          onClick={onOpen}
+        />
+
+        <ul
+          className="rounded p-2  flex flex-col space-y-2 "
+          onClick={(e) => e.stopPropagation()}
         >
-          Load Next
-        </button>
-      )}
-      {isPending && "Loading more ..."}
-    </ul>
-  );
-};
-
-const Card = ({
-  card,
-}: {
-  card: {
-    readonly node: { readonly id: string; readonly title: string } | null;
-  };
-}) => {
-  return (
-    <li
-      className="bg-amber-200 border border-amber-300 rounded p-2 cursor-pointer"
-      key={card.node?.id}
-    >
-      {card.node?.title}
-    </li>
+          {data.cards.edges?.map((card) => (
+            <Card key={card.node?.id} {...{ card }} __id={data.cards.__id} />
+          ))}
+          {data.cards.pageInfo?.hasNextPage && (
+            <ICLoadMore
+              className="w-8 text-cyan-300 ml-auto cursor-pointer"
+              onClick={onLoadMore}
+            />
+          )}
+          {isPending && "Loading more ..."}
+        </ul>
+      </div>
+      {isOpen && <CardsModal {...{ onClose, todoId }} __id={data.cards.__id} />}
+    </>
   );
 };

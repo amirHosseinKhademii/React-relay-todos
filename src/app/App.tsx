@@ -1,21 +1,17 @@
-import { Todo } from "containers/todo/Todos";
+import { Todos } from "containers/todos/Todos";
 import { Suspense } from "react";
-import { loadQuery, RelayEnvironmentProvider } from "react-relay";
+import { RelayEnvironmentProvider } from "react-relay";
 import { environment } from "relay";
 import "./index.css";
-import { TodoQuery as TTodoQuery } from "containers/todo/graphql/__generated__/TodoQuery.graphql";
-import { TodoQuery } from "containers/todo/graphql/Todo.queries";
-
-const initialQueryRef = loadQuery<TTodoQuery>(environment, TodoQuery, {
-  id: "VG9kbzo5ZmFkMGQ2YS04YjIwLTRjNzgtOGNkZi0yYTM4MjcwMzY1OGY=",
-});
 
 export function App() {
   return (
-    <RelayEnvironmentProvider environment={environment}>
-      <Suspense fallback="Loading Todos ...">
-        <Todo {...{ initialQueryRef }} />
-      </Suspense>
-    </RelayEnvironmentProvider>
+    <div className="bg-slate-900 antialiased h-screen p-8">
+      <RelayEnvironmentProvider environment={environment}>
+        <Suspense fallback="Loading Todos ...">
+          <Todos />
+        </Suspense>
+      </RelayEnvironmentProvider>
+    </div>
   );
 }
