@@ -26,3 +26,14 @@ export const CommentDeleteMutation = graphql`
     }
   }
 `;
+
+export const CommentLikeMutation = graphql`
+  mutation CommentLikeMutation($input: LikeCommentInput!) {
+    likeComment(input: $input) {
+      clientMutationId
+      comment {
+        ...CommentBaseFragment
+      }
+    }
+  }
+`;

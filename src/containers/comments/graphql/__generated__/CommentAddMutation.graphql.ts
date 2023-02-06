@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7f154fed127bed1b124df3b03b7267a6>>
+ * @generated SignedSource<<3c6bd4c82aaec41ca8fb47226588070d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -191,6 +191,13 @@ return {
                     "kind": "ScalarField",
                     "name": "updated_at",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "likes",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -225,12 +232,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "936941b546dcb87bec9d36893ae93c92",
+    "cacheID": "14cf31ff2179a90f7a37b2447065d6ed",
     "id": null,
     "metadata": {},
     "name": "CommentAddMutation",
     "operationKind": "mutation",
-    "text": "mutation CommentAddMutation(\n  $input: AddCommentInput!\n) {\n  addComment(input: $input) {\n    clientMutationId\n    addCommentEdge {\n      cursor\n      node {\n        ...CommentBaseFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CommentBaseFragment on Comment {\n  id\n  title\n  description\n  created_at\n  updated_at\n}\n"
+    "text": "mutation CommentAddMutation(\n  $input: AddCommentInput!\n) {\n  addComment(input: $input) {\n    clientMutationId\n    addCommentEdge {\n      cursor\n      node {\n        ...CommentBaseFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CommentBaseFragment on Comment {\n  id\n  title\n  description\n  created_at\n  updated_at\n  likes\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8aa4be0fb2b45ca27f06c8b4c968af66>>
+ * @generated SignedSource<<402dda39d32fae902d94953a20bbf008>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -204,6 +204,13 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
+                    "name": "likes",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "__typename",
                     "storageKey": null
                   }
@@ -249,16 +256,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0ec4e5e22410206ddd341f44552501ab",
+    "cacheID": "2b2eb554c4887d47ddcb9ad876b302a2",
     "id": null,
     "metadata": {},
     "name": "CommentsPaginationFrgament",
     "operationKind": "query",
-    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        description\n        created_at\n        updated_at\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        description\n        created_at\n        updated_at\n        likes\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ee7b253883b3843357055415d89296b5";
+(node as any).hash = "e30416272114f4dbc27c65b2f8c3486a";
 
 export default node;

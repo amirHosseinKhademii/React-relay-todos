@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7b2a6019fba0314beda404ac110b23a4>>
+ * @generated SignedSource<<6ad9d263d06ba368384b3305f30b8cdc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type CommentBaseFragment$data = {
   readonly created_at: any | null;
   readonly description: string | null;
   readonly id: string;
+  readonly likes: ReadonlyArray<string>;
   readonly title: string;
   readonly updated_at: any | null;
   readonly " $fragmentType": "CommentBaseFragment";
@@ -63,12 +64,19 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "updated_at",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "likes",
+      "storageKey": null
     }
   ],
   "type": "Comment",
   "abstractKey": null
 };
 
-(node as any).hash = "6d41f56e89bcb81d391535f3c3ddfaf0";
+(node as any).hash = "47432d4b9b4eb164297609c2649f863b";
 
 export default node;

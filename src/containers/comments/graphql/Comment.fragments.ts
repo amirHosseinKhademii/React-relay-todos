@@ -7,6 +7,7 @@ export const CommentBaseFragment = graphql`
     description
     created_at
     updated_at
+    likes
   }
 `;
 
@@ -31,6 +32,7 @@ export const CommentsQueryFragment = graphql`
           description
           created_at
           updated_at
+          likes
         }
       }
     }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2c0d18411473b178966fefcf73aa561f>>
+ * @generated SignedSource<<0f4f93d0eed66198d0b864718c46b1bc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,7 @@ export type CommentsQueryFragment$data = {
         readonly created_at: any | null;
         readonly description: string | null;
         readonly id: string;
+        readonly likes: ReadonlyArray<string>;
         readonly title: string;
         readonly updated_at: any | null;
       } | null;
@@ -198,6 +199,13 @@ return {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
+                  "name": "likes",
+                  "storageKey": null
+                },
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
                   "name": "__typename",
                   "storageKey": null
                 }
@@ -235,6 +243,6 @@ return {
 };
 })();
 
-(node as any).hash = "ee7b253883b3843357055415d89296b5";
+(node as any).hash = "e30416272114f4dbc27c65b2f8c3486a";
 
 export default node;
