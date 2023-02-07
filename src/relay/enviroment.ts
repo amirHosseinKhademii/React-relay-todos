@@ -8,10 +8,13 @@ import {
   Variables,
   GraphQLResponse,
 } from "relay-runtime";
-import { token } from "./token";
+
 //import { SubscriptionClient } from "subscriptions-transport-ws";
 
 import { createClient } from "graphql-ws";
+
+const user = localStorage.getItem("user");
+const token = user ? JSON.parse(user).token : "";
 
 const wsClient = createClient({
   url: "ws://localhost:3001/graphql",

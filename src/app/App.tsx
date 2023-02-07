@@ -1,21 +1,14 @@
-import { Todos } from "containers/todos/Todos";
-import { Users } from "containers/users/Users";
-import { Suspense } from "react";
 import { RelayEnvironmentProvider } from "react-relay";
+import { RecoilRoot } from "recoil";
 import { environment } from "relay";
-import "./index.css";
+import { AppRouter } from "./Routes";
 
 export function App() {
   return (
     <RelayEnvironmentProvider environment={environment}>
-      <div className="bg-slate-900 antialiased h-screen p-8 grid grid-cols-3 gap-x-4">
-        <Suspense fallback="Loading Todos ...">
-          <Todos />
-        </Suspense>
-        <Suspense fallback="Loading Users ...">
-          <Users />
-        </Suspense>
-      </div>
+      <RecoilRoot>
+        <AppRouter />
+      </RecoilRoot>
     </RelayEnvironmentProvider>
   );
 }
