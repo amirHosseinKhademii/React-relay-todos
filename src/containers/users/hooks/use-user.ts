@@ -1,7 +1,9 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { useMutation } from "react-relay";
 import { UserFollowMutation } from "containers/users/graphql/User.mutations";
 import { UserFollowMutation as TUserFollowMutation } from "containers/users/graphql/__generated__/UserFollowMutation.graphql";
+import { useRecoilValue } from "recoil";
+import { authAtom } from "providers/atoms/auth-atoms";
 
 export type TUser = {
   readonly followers: readonly string[];
@@ -16,7 +18,14 @@ export const useUser = () => {
 
   const clientMutationId = useId();
 
+  const { user: userId } = useRecoilValue(authAtom);
+  const [isMessagesOpen, setisMessagesOpen] = useState(false);
+  const onMessagesToggle = () => setisMessagesOpen((prev) => !prev);
+
   return {
+    userId,
+    isMessagesOpen,
+    onMessagesToggle,
     onFollow: (user: TUser) => {
       followUser({
         variables: {

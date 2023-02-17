@@ -1,13 +1,11 @@
+import { Messages } from "containers/messages/Messages";
 import { ICComments } from "icons/ICComments";
 import { ICPersonMinus } from "icons/ICPersonMinus";
 import { ICPersonPlus } from "icons/ICPersonPlus";
-import { authAtom } from "providers/atoms/auth-atoms";
-import { useRecoilValue } from "recoil";
 import { TUser, useUser } from "./hooks/use-user";
 
 export const User = ({ user }: { user: TUser }) => {
-  const { onFollow } = useUser();
-  const { user: userId } = useRecoilValue(authAtom);
+  const { onFollow, userId, onMessagesToggle, isMessagesOpen } = useUser();
 
   if (user?.id === userId) return null;
   return (
@@ -17,7 +15,7 @@ export const User = ({ user }: { user: TUser }) => {
         <div className="flex items-center space-x-2">
           <ICComments
             className=" text-green-300 w-5 mx-auto cursor-pointer "
-            //onClick={onCommentsToggle}
+            onClick={onMessagesToggle}
           />
           {user?.followers.includes(userId!) ? (
             <ICPersonMinus
@@ -32,12 +30,8 @@ export const User = ({ user }: { user: TUser }) => {
           )}
         </div>
       </div>
-      <form className="flex items-center space-x-2">
-        <textarea className="h-8 rounded w-full px-2 pt-1" />
-        <button className="bg-cyan-500 text-white rounded px-2 py-1">
-          Send
-        </button>
-      </form>
+
+      {isMessagesOpen && <Messages />}
     </div>
   );
 };
