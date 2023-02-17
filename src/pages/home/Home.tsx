@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 const Home = () => {
   return (
-    <div className="bg-slate-900 antialiased h-screen p-8 grid grid-cols-3 gap-x-4">
+    <div className="bg-slate-900 antialiased h-screen p-8 grid grid-cols-2 gap-x-4">
       <Suspense fallback="Loading Todos ...">
         <Todos />
       </Suspense>
