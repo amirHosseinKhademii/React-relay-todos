@@ -1,4 +1,3 @@
-import { useAuth } from "hooks";
 import Authentication from "pages/authentication/Authentication";
 import Home from "pages/home/Home";
 import { authAtom } from "providers/atoms/auth-atoms";
@@ -35,7 +34,6 @@ export const Routes = () => {
 };
 
 export const AppRouter = () => {
-  useAuth();
   return (
     <BrowserRouter>
       <Routes />
