@@ -33,7 +33,7 @@ import { TodosFragment } from "containers/todos/graphql/Todos.fragment";
 export const useTodos = () => {
   const [isPending, startTransition] = useTransition();
 
-  const todos = useLazyLoadQuery<TTodosQuery>(TodosQuery, { first: 5 });
+  const todos = useLazyLoadQuery<TTodosQuery>(TodosQuery, { first: 20 });
 
   const { data, loadNext } = usePaginationFragment<
     TodosPaginationFrgament,
