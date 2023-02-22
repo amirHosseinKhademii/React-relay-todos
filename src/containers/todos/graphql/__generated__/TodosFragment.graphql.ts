@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f4af3e6b86d418bf5f4d6ca5cf2bda91>>
+ * @generated SignedSource<<f6c18d79c044ef96b5f4d67768e6d612>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,7 @@ export type TodosFragment$data = {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly body: string | null;
+        readonly createdDate: any;
         readonly id: string;
         readonly isCompleted: boolean;
         readonly title: string;
@@ -189,6 +190,13 @@ return {
                       "alias": null,
                       "args": null,
                       "kind": "ScalarField",
+                      "name": "createdDate",
+                      "storageKey": null
+                    },
+                    {
+                      "alias": null,
+                      "args": null,
+                      "kind": "ScalarField",
                       "name": "__typename",
                       "storageKey": null
                     }
@@ -228,6 +236,6 @@ return {
 };
 })();
 
-(node as any).hash = "4e4f0f2f8bd00381de5b55221b7e0a38";
+(node as any).hash = "8dd4e7cd636075133235078ee7283422";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a7de7d4336057fa1cbd24b597406157f>>
+ * @generated SignedSource<<2c5f64c582281442adb3beea0b26b38d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -206,6 +206,13 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
+                        "name": "createdDate",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
                         "name": "__typename",
                         "storageKey": null
                       }
@@ -251,12 +258,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "67dfae788a5fe975f740e5e7623546d7",
+    "cacheID": "263e1d93125dff51c134b58231eb5b5e",
     "id": null,
     "metadata": {},
     "name": "TodosQuery",
     "operationKind": "query",
-    "text": "query TodosQuery(\n  $before: String\n  $after: String\n  $first: Int\n  $last: Int\n) {\n  ...TodosFragment\n}\n\nfragment TodosFragment on Query {\n  todos(before: $before, after: $after, first: $first, last: $last) {\n    ... @defer(label: \"TodosFragment$defer$List__todos$pageInfo\") {\n      pageInfo {\n        hasNextPage\n        endCursor\n        hasPreviousPage\n        startCursor\n      }\n    }\n    edges @stream(label: \"TodosFragment$stream$List__todos\", initial_count: 2) {\n      node {\n        title\n        body\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query TodosQuery(\n  $before: String\n  $after: String\n  $first: Int\n  $last: Int\n) {\n  ...TodosFragment\n}\n\nfragment TodosFragment on Query {\n  todos(before: $before, after: $after, first: $first, last: $last) {\n    ... @defer(label: \"TodosFragment$defer$List__todos$pageInfo\") {\n      pageInfo {\n        hasNextPage\n        endCursor\n        hasPreviousPage\n        startCursor\n      }\n    }\n    edges @stream(label: \"TodosFragment$stream$List__todos\", initial_count: 2) {\n      node {\n        title\n        body\n        id\n        isCompleted\n        createdDate\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
   }
 };
 })();

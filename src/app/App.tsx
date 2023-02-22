@@ -6,12 +6,12 @@ import { environment } from "relay/multipart";
 import "./index.css";
 
 export function App() {
-  const [isOpen, setisOpen] = useState(false);
   return (
-    <div className="bg-slate-900 antialiased h-screen p-8">
+    <div className="bg-slate-900 antialiased p-8 h-screen overflow-y-auto">
       <RelayEnvironmentProvider environment={environment}>
-        <button onClick={() => setisOpen(true)}>Open</button>
-        <Suspense fallback="Loading Todos ...">{isOpen && <Todos />}</Suspense>
+        <Suspense fallback="Loading Todos ...">
+          <Todos />
+        </Suspense>
       </RelayEnvironmentProvider>
     </div>
   );

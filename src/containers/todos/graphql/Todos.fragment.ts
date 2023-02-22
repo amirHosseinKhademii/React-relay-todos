@@ -15,6 +15,7 @@ export const TodosFragment = graphql`
           body
           id
           isCompleted
+          createdDate
         }
       }
     }

@@ -142,7 +142,7 @@ const fetchFn = (
                 }
 
                 // DEMO: delay chunked responses
-                await pause(300);
+                await pause(100);
 
                 if ("data" in part.body) {
                   sink.next(part.body);
